@@ -1,0 +1,3819 @@
+commit 8f2ab1eb89bc702c9573d58a66d262f437cf460c
+Author: mo-affan <mohammedaffan15128@gmail.com>
+Date:   Sat Sep 19 16:46:57 2026 +0530
+
+    Build ORBIT intelligence dashboard UI
+
+diff --git a/package-lock.json b/package-lock.json
+index 35d99c5..09768af 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -1134,99 +1134,12 @@
+       },
+       "funding": {
+         "type": "github",
+         "url": "https://github.com/sponsors/nzakas"
+       }
+     },
+-    "node_modules/@inquirer/ansi": {
+-      "version": "2.0.8",
+-      "resolved": "https://registry.npmjs.org/@inquirer/ansi/-/ansi-2.0.8.tgz",
+-      "integrity": "sha512-WpQM+Ti6Z40EFwwt+uL2p4UabT+W179zHp6HhLVOzfbwnVn05IPO/eXIZXGNqcT1jbQ15SujNLzQ39k4QPPxBQ==",
+-      "dev": true,
+-      "license": "MIT",
+-      "engines": {
+-        "node": ">=23.5.0 || ^22.13.0 || ^20.17.0"
+-      }
+-    },
+-    "node_modules/@inquirer/confirm": {
+-      "version": "6.3.2",
+-      "resolved": "https://registry.npmjs.org/@inquirer/confirm/-/confirm-6.3.2.tgz",
+-      "integrity": "sha512-Xvr/0HggjddPtGppuqVmxhTw+Hr8PvsZ/k0HmOEaAqQEt80OITNkFWnsdNmyT0/eM4Ab+iJLx2R8rctlEyfSVg==",
+-      "dev": true,
+-      "license": "MIT",
+-      "dependencies": {
+-        "@inquirer/core": "^12.0.3",
+-        "@inquirer/type": "4.1.1"
+-      },
+-      "engines": {
+-        "node": ">=23.5.0 || ^22.13.0 || ^20.17.0"
+-      },
+-      "peerDependencies": {
+-        "@types/node": ">=18"
+-      },
+-      "peerDependenciesMeta": {
+-        "@types/node": {
+-          "optional": true
+-        }
+-      }
+-    },
+-    "node_modules/@inquirer/core": {
+-      "version": "12.0.3",
+-      "resolved": "https://registry.npmjs.org/@inquirer/core/-/core-12.0.3.tgz",
+-      "integrity": "sha512-wsSy0sznmXwkty+2PzZwx00Cazc/E0r0B7mAzdGROz2Ct+DFZXaK7WDjGZvgjRldxH5ZhFVfF2lgkYrqgOw2KA==",
+-      "dev": true,
+-      "license": "MIT",
+-      "dependencies": {
+-        "@inquirer/ansi": "^2.0.8",
+-        "@inquirer/figures": "^2.0.9",
+-        "@inquirer/type": "4.1.1",
+-        "cli-width": "^4.1.0",
+-        "fast-wrap-ansi": "^0.2.0",
+-        "mute-stream": "^3.0.0",
+-        "signal-exit": "^4.1.0"
+-      },
+-      "engines": {
+-        "node": ">=23.5.0 || ^22.13.0 || ^20.17.0"
+-      },
+-      "peerDependencies": {
+-        "@types/node": ">=18"
+-      },
+-      "peerDependenciesMeta": {
+-        "@types/node": {
+-          "optional": true
+-        }
+-      }
+-    },
+-    "node_modules/@inquirer/figures": {
+-      "version": "2.0.9",
+-      "resolved": "https://registry.npmjs.org/@inquirer/figures/-/figures-2.0.9.tgz",
+-      "integrity": "sha512-EAWgUTGQ/Umgga51dE3B2PUHbufuXarDfg86uVgoSgNHNNQnyFKcOrQLWVqYMghuSyHh8+2HUH0Js9cTC1WAdg==",
+-      "dev": true,
+-      "license": "MIT",
+-      "engines": {
+-        "node": ">=23.5.0 || ^22.13.0 || ^20.17.0"
+-      }
+-    },
+-    "node_modules/@inquirer/type": {
+-      "version": "4.1.1",
+-      "resolved": "https://registry.npmjs.org/@inquirer/type/-/type-4.1.1.tgz",
+-      "integrity": "sha512-yJoHYrMnxIsJZCY+0Vb66Dy3he3kL3e2wOBKhoSwWWAzZAY82emlxwgprCtp6yRixvNRNq9ztfRWQYPNr3Go7A==",
+-      "dev": true,
+-      "license": "MIT",
+-      "engines": {
+-        "node": ">=23.5.0 || ^22.13.0 || ^20.17.0"
+-      },
+-      "peerDependencies": {
+-        "@types/node": ">=18"
+-      },
+-      "peerDependenciesMeta": {
+-        "@types/node": {
+-          "optional": true
+-        }
+-      }
+-    },
+     "node_modules/@jridgewell/gen-mapping": {
+       "version": "0.3.13",
+       "resolved": "https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.3.13.tgz",
+       "integrity": "sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==",
+       "dev": true,
+       "license": "MIT",
+@@ -1263,418 +1176,45 @@
+       "dev": true,
+       "license": "MIT"
+     },
+     "node_modules/@jridgewell/trace-mapping": {
+       "version": "0.3.31",
+       "resolved": "https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.31.tgz",
+-      "integrity": "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==",
+-      "dev": true,
+-      "license": "MIT",
+-      "dependencies": {
+-        "@jridgewell/resolve-uri": "^3.1.0",
+-        "@jridgewell/sourcemap-codec": "^1.4.14"
+-      }
+-    },
+-    "node_modules/@mswjs/interceptors": {
+-      "version": "0.41.9",
+-      "resolved": "https://registry.npmjs.org/@mswjs/interceptors/-/interceptors-0.41.9.tgz",
+-      "integrity": "sha512-VVPPgHyQ6ShqnrmDWuxjmUIsO9gWyOZFmuOfLd9LfBGQJwZfy0gvv9pbHSJuoFNIYC7ZDX9aoFwowjcdSC4E8w==",
+-      "dev": true,
+-      "license": "MIT",
+-      "dependencies": {
+-        "@open-draft/deferred-promise": "^2.2.0",
+-        "@open-draft/logger": "^0.3.0",
+-        "@open-draft/until": "^2.0.0",
+-        "is-node-process": "^1.2.0",
+-        "outvariant": "^1.4.3",
+-        "strict-event-emitter": "^0.5.1"
+-      },
+-      "engines": {
+-        "node": ">=18"
+-      }
+-    },
+-    "node_modules/@mswjs/interceptors/node_modules/@open-draft/deferred-promise": {
+-      "version": "2.2.0",
+-      "resolved": "https://registry.npmjs.org/@open-draft/deferred-promise/-/deferred-promise-2.2.0.tgz",
+-      "integrity": "sha512-CecwLWx3rhxVQF6V4bAgPS5t+So2sTbPgAzafKkVizyi7tlwpcFpdFqq+wqF2OwNBmqFuu6tOyouTuxgpMfzmA==",
+-      "dev": true,
+-      "license": "MIT"
+-    },
+-    "node_modules/@napi-rs/lzma-linux-x64-gnu": {
+-      "version": "1.5.1",
+-      "resolved": "https://registry.npmjs.org/@napi-rs/lzma-linux-x64-gnu/-/lzma-linux-x64-gnu-1.5.1.tgz",
+-      "integrity": "sha512-oTXEIha4SsuXdTA4Iyskj0kpdx2yVXdhd75c2v3xGrHFfVMsbhTPZU/nMPL4sWKo4pBHm3aucLaqGlF696dTyQ==",
+-      "cpu": [
+-        "x64"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "linux"
+-      ],
+-      "engines": {
+-        "node": "^22.20 || ^24.12 || >=25"
+-      }
+-    },
+-    "node_modules/@open-draft/deferred-promise": {
+-      "version": "3.0.0",
+-      "resolved": "https://registry.npmjs.org/@open-draft/deferred-promise/-/deferred-promise-3.0.0.tgz",
+-      "integrity": "sha512-XW375UK8/9SqUVNVa6M0yEy8+iTi4QN5VZ7aZuRFQmy76LRwI9wy5F4YIBU6T+eTe2/DNDo8tqu8RHlwLHM6RA==",
+-      "dev": true,
+-      "license": "MIT"
+-    },
+-    "node_modules/@open-draft/logger": {
+-      "version": "0.3.0",
+-      "resolved": "https://registry.npmjs.org/@open-draft/logger/-/logger-0.3.0.tgz",
+-      "integrity": "sha512-X2g45fzhxH238HKO4xbSr7+wBS8Fvw6ixhTDuvLd5mqh6bJJCFAPwU9mPDxbcrRtfxv4u5IHCEH77BmxvXmmxQ==",
+-      "dev": true,
+-      "license": "MIT",
+-      "dependencies": {
+-        "is-node-process": "^1.2.0",
+-        "outvariant": "^1.4.0"
+-      }
+-    },
+-    "node_modules/@open-draft/until": {
+-      "version": "2.1.0",
+-      "resolved": "https://registry.npmjs.org/@open-draft/until/-/until-2.1.0.tgz",
+-      "integrity": "sha512-U69T3ItWHvLwGg5eJ0n3I62nWuE6ilHlmz7zM0npLBRvPRd7e6NYmg54vvRtP5mZG7kZqZCFVdsTWo7BPtBujg==",
+-      "dev": true,
+-      "license": "MIT"
+-    },
+-    "node_modules/@oxc-project/types": {
+-      "version": "0.150.0",
+-      "resolved": "https://registry.npmjs.org/@oxc-project/types/-/types-0.150.0.tgz",
+-      "integrity": "sha512-rDS5/31E9HfPl/CIzGrn0DOlvBbXFseQ5URJ9sYMfstbKLD/c6Gm9vmRzRGDdAXyOIL4zmO37lc9RIwYqVruZw==",
+-      "dev": true,
+-      "license": "MIT",
+-      "funding": {
+-        "url": "https://github.com/sponsors/oxc-project"
+-      }
+-    },
+-    "node_modules/@oxlint/binding-android-arm-eabi": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-android-arm-eabi/-/binding-android-arm-eabi-1.83.0.tgz",
+-      "integrity": "sha512-0yGY24EwsLk5YDe6F+VkmZyRHSwJDALa3nIrPpq7FXmp2lV2d0TzvBCGeZk+wgiULRGr5blhyr4QMp5KCXJUqA==",
+-      "cpu": [
+-        "arm"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "android"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
+-      }
+-    },
+-    "node_modules/@oxlint/binding-android-arm64": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-android-arm64/-/binding-android-arm64-1.83.0.tgz",
+-      "integrity": "sha512-hHfJ0vc17A4iUjH5p9BsTUPYbYRNxGpvD2lbu1aBRk54bzNIx9o5TtYF39QPZcV95DagZd+4DEAw2RH3G2ZsMg==",
+-      "cpu": [
+-        "arm64"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "android"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
+-      }
+-    },
+-    "node_modules/@oxlint/binding-darwin-arm64": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-darwin-arm64/-/binding-darwin-arm64-1.83.0.tgz",
+-      "integrity": "sha512-hsOjYjszLb/3zym/TkzUMPAoQlTJcuzSyEPOAyA+skXJIX9M0o+4JfOtqopX/Vf4hSLrJ98j0nvFo23gzk8auQ==",
+-      "cpu": [
+-        "arm64"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "darwin"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
+-      }
+-    },
+-    "node_modules/@oxlint/binding-darwin-x64": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-darwin-x64/-/binding-darwin-x64-1.83.0.tgz",
+-      "integrity": "sha512-mjh5oH2EA+wl5yRJYT9K9G61O2zFlpuv+yf2JwZOi0+dq2FnTUtm1h8i+5Ik0fXPWIu/k84I1psZR9aQsLAnyA==",
+-      "cpu": [
+-        "x64"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "darwin"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
+-      }
+-    },
+-    "node_modules/@oxlint/binding-freebsd-x64": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-freebsd-x64/-/binding-freebsd-x64-1.83.0.tgz",
+-      "integrity": "sha512-fNHr64/YaO8YssuoDVC8+F4Uk5enR86q5uxfHkQrjAPs1dbAILOrD2uaud+J7MO8Fx774g44ERLD0IGIvZE48w==",
+-      "cpu": [
+-        "x64"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "freebsd"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
+-      }
+-    },
+-    "node_modules/@oxlint/binding-linux-arm-gnueabihf": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-linux-arm-gnueabihf/-/binding-linux-arm-gnueabihf-1.83.0.tgz",
+-      "integrity": "sha512-Qpwy3zzAwMj+8/lyYItHmkSMwbkprFNWTK7jPYDOxSyxEhaSLOWYUTCMkjF334J8/WD0nznCCsoBbIH6hpsuIw==",
+-      "cpu": [
+-        "arm"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "linux"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
+-      }
+-    },
+-    "node_modules/@oxlint/binding-linux-arm-musleabihf": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-linux-arm-musleabihf/-/binding-linux-arm-musleabihf-1.83.0.tgz",
+-      "integrity": "sha512-s+BirYLFq7JL2k9sP0XI3ZXJ9dYvJ8sX3jLCLoag7tt+zrSHpZxP0jqznfL+Gdgwu7ay0dYgGYJXrQvq3iWloA==",
+-      "cpu": [
+-        "arm"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "linux"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
+-      }
+-    },
+-    "node_modules/@oxlint/binding-linux-arm64-gnu": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-linux-arm64-gnu/-/binding-linux-arm64-gnu-1.83.0.tgz",
+-      "integrity": "sha512-7lihXt3vKr+GIyapNbHrnFHm/biiW30le6Zv/DExbAFPF6YwCQXVFlONPFehxs0CpGO4CBfYPM9rdDT+XMoIlg==",
+-      "cpu": [
+-        "arm64"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "linux"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
+-      }
+-    },
+-    "node_modules/@oxlint/binding-linux-arm64-musl": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-linux-arm64-musl/-/binding-linux-arm64-musl-1.83.0.tgz",
+-      "integrity": "sha512-q63JalLYVkZiZvls1z3PPUnpmQluOMXp0khqQMznCeAPLGydfNY8JhvuA4WlK57JfrvikU8wB5lPVveqpIXvew==",
+-      "cpu": [
+-        "arm64"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "linux"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
+-      }
+-    },
+-    "node_modules/@oxlint/binding-linux-ppc64-gnu": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-linux-ppc64-gnu/-/binding-linux-ppc64-gnu-1.83.0.tgz",
+-      "integrity": "sha512-krQmDF+dRbxvdqVPV88ZuOoPPu8X5BuqDA8Hd+qcS4YMRQCb+nexA57DazgGsc/rGdKBe3QmV0mnv0bdpW/p5g==",
+-      "cpu": [
+-        "ppc64"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "linux"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
+-      }
+-    },
+-    "node_modules/@oxlint/binding-linux-riscv64-gnu": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-linux-riscv64-gnu/-/binding-linux-riscv64-gnu-1.83.0.tgz",
+-      "integrity": "sha512-MmOl8Y6txEAXZU1RG8Rr264jQ6D7VPmqFsU/45x/FeWsGe32hklTqGrLE6UxHzp5Rjt0wP+20tY8YXKgSFB3mw==",
+-      "cpu": [
+-        "riscv64"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "linux"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
+-      }
+-    },
+-    "node_modules/@oxlint/binding-linux-riscv64-musl": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-linux-riscv64-musl/-/binding-linux-riscv64-musl-1.83.0.tgz",
+-      "integrity": "sha512-u1rMymh0W3JZkq370kzQsYPULGWqhE09pZRqnZvUSoYaI9pVO5yVX+iYIslmWuEgwuzH9YAaOsScJiobWCHoOw==",
+-      "cpu": [
+-        "riscv64"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "linux"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
+-      }
+-    },
+-    "node_modules/@oxlint/binding-linux-s390x-gnu": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-linux-s390x-gnu/-/binding-linux-s390x-gnu-1.83.0.tgz",
+-      "integrity": "sha512-y0zK3HNwGysu7rqtE+BQG/d0bx5gh/KwlOtghN8oWeK1KcWzeaLqtZrbm8owqdma1lFyrce/hTO5ismuNu+INQ==",
+-      "cpu": [
+-        "s390x"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "linux"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
+-      }
+-    },
+-    "node_modules/@oxlint/binding-linux-x64-gnu": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-linux-x64-gnu/-/binding-linux-x64-gnu-1.83.0.tgz",
+-      "integrity": "sha512-rS5gM0NgD7ngmuJmbIehsidtrOwKkLFwCQbKEeb9KuyQrrWNq5Zkn0uV6AYdXOMJ0grrWEiLwBuvMxt8w5vsNw==",
+-      "cpu": [
+-        "x64"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "linux"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
+-      }
+-    },
+-    "node_modules/@oxlint/binding-linux-x64-musl": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-linux-x64-musl/-/binding-linux-x64-musl-1.83.0.tgz",
+-      "integrity": "sha512-W2IH4EtpcPaWcvNGCA95YoDg4vxqE/ZiPCi3arrxEEpsK7+JQN9WYwrlYFx9pcdP6KPXqRqkv3zdQPHcx7b6YQ==",
+-      "cpu": [
+-        "x64"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "linux"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
+-      }
+-    },
+-    "node_modules/@oxlint/binding-openharmony-arm64": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-openharmony-arm64/-/binding-openharmony-arm64-1.83.0.tgz",
+-      "integrity": "sha512-6LyKkUyoajssTPLlZmDbZIbu4IZ5B4bGuRUnBgCGpEvHP3FQMaYITncHA/unPUo7q+Z+pIu2HhdkQ+8d1SG7iA==",
+-      "cpu": [
+-        "arm64"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "openharmony"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
+-      }
+-    },
+-    "node_modules/@oxlint/binding-win32-arm64-msvc": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-win32-arm64-msvc/-/binding-win32-arm64-msvc-1.83.0.tgz",
+-      "integrity": "sha512-Uz/fObEtF0jmNJQJ8CGRBKfefYstS0/wjD3s6IGzP8nUwsJykHQJBiN3npHwKiGRGn/vvBEgNr4B3cCzmmatvg==",
+-      "cpu": [
+-        "arm64"
+-      ],
+-      "dev": true,
+-      "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "win32"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
++      "integrity": "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@jridgewell/resolve-uri": "^3.1.0",
++        "@jridgewell/sourcemap-codec": "^1.4.14"
+       }
+     },
+-    "node_modules/@oxlint/binding-win32-ia32-msvc": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-win32-ia32-msvc/-/binding-win32-ia32-msvc-1.83.0.tgz",
+-      "integrity": "sha512-u7XcvPW6Bk58tY5iWs2ESb0vJjoE/kuSpHxopbwp/p3ZtWVQXZ6wor5w3ssVTHOqd/v8b+QdhSFWQ4grEUNWpA==",
++    "node_modules/@napi-rs/lzma-linux-x64-gnu": {
++      "version": "1.5.1",
++      "resolved": "https://registry.npmjs.org/@napi-rs/lzma-linux-x64-gnu/-/lzma-linux-x64-gnu-1.5.1.tgz",
++      "integrity": "sha512-oTXEIha4SsuXdTA4Iyskj0kpdx2yVXdhd75c2v3xGrHFfVMsbhTPZU/nMPL4sWKo4pBHm3aucLaqGlF696dTyQ==",
+       "cpu": [
+-        "ia32"
++        "x64"
+       ],
+       "dev": true,
+       "license": "MIT",
+       "optional": true,
+       "os": [
+-        "win32"
++        "linux"
+       ],
+       "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
++        "node": "^22.20 || ^24.12 || >=25"
+       }
+     },
+-    "node_modules/@oxlint/binding-win32-x64-msvc": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/@oxlint/binding-win32-x64-msvc/-/binding-win32-x64-msvc-1.83.0.tgz",
+-      "integrity": "sha512-LZRubd7ph13QmAg4fFecTYVZkiYbROR2Htaxh/ufWRkDhPOm2wrwaEYR89e0YpPFD3dqBrPoxS7myBw5hmYA7Q==",
+-      "cpu": [
+-        "x64"
+-      ],
++    "node_modules/@oxc-project/types": {
++      "version": "0.150.0",
++      "resolved": "https://registry.npmjs.org/@oxc-project/types/-/types-0.150.0.tgz",
++      "integrity": "sha512-rDS5/31E9HfPl/CIzGrn0DOlvBbXFseQ5URJ9sYMfstbKLD/c6Gm9vmRzRGDdAXyOIL4zmO37lc9RIwYqVruZw==",
+       "dev": true,
+       "license": "MIT",
+-      "optional": true,
+-      "os": [
+-        "win32"
+-      ],
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
++      "funding": {
++        "url": "https://github.com/sponsors/oxc-project"
+       }
+     },
+     "node_modules/@rolldown/binding-android-arm-eabi": {
+       "version": "1.2.9",
+       "resolved": "https://registry.npmjs.org/@rolldown/binding-android-arm-eabi/-/binding-android-arm-eabi-1.2.9.tgz",
+       "integrity": "sha512-tNISae1QEf/vkb3xkRcjV5SEdzPE97We5IVaa2Z8jSszQPZ8U60B/YCYpw4QI7VidYsBtKavczXf+DyDs9WGxw==",
+@@ -2478,29 +2018,12 @@
+       "dev": true,
+       "license": "MIT",
+       "peerDependencies": {
+         "@types/react": "^19.3.0"
+       }
+     },
+-    "node_modules/@types/set-cookie-parser": {
+-      "version": "2.4.10",
+-      "resolved": "https://registry.npmjs.org/@types/set-cookie-parser/-/set-cookie-parser-2.4.10.tgz",
+-      "integrity": "sha512-GGmQVGpQWUe5qglJozEjZV/5dyxbOOZ0LHe/lqyWssB88Y4svNfst0uqBVscdDeIKl5Jy5+aPSvy7mI9tYRguw==",
+-      "dev": true,
+-      "license": "MIT",
+-      "dependencies": {
+-        "@types/node": "*"
+-      }
+-    },
+-    "node_modules/@types/statuses": {
+-      "version": "2.0.6",
+-      "resolved": "https://registry.npmjs.org/@types/statuses/-/statuses-2.0.6.tgz",
+-      "integrity": "sha512-xMAgYwceFhRA2zY+XbEA7mxYbA093wdiW8Vu6gZPGWy9cmOyU9XesH1tNcEWsKFd5Vzrqx5T3D38PWx1FIIXkA==",
+-      "dev": true,
+-      "license": "MIT"
+-    },
+     "node_modules/@typescript-eslint/eslint-plugin": {
+       "version": "8.70.0",
+       "resolved": "https://registry.npmjs.org/@typescript-eslint/eslint-plugin/-/eslint-plugin-8.70.0.tgz",
+       "integrity": "sha512-/v8HZt6RlyIZxB3ntehELOcUcfxKPVGWXnQdJuHRmzrqgF8nQypcC/oxGW+Ot4VGKDq81XugPKxx0n5PBtf9PA==",
+       "dev": true,
+       "license": "MIT",
+@@ -2964,12 +2487,13 @@
+     "node_modules/ansi-regex": {
+       "version": "5.0.1",
+       "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz",
+       "integrity": "sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==",
+       "dev": true,
+       "license": "MIT",
++      "peer": true,
+       "engines": {
+         "node": ">=8"
+       }
+     },
+     "node_modules/ansi-styles": {
+       "version": "4.3.0",
+@@ -3171,37 +2695,12 @@
+       "dev": true,
+       "license": "MIT",
+       "engines": {
+         "node": ">= 16"
+       }
+     },
+-    "node_modules/cli-width": {
+-      "version": "4.1.0",
+-      "resolved": "https://registry.npmjs.org/cli-width/-/cli-width-4.1.0.tgz",
+-      "integrity": "sha512-ouuZd4/dm2Sw5Gmqy6bGyNNNe1qt9RpmxveLSO7KcgsTnU7RXfsw+/bukWGo1abgBiMAic068rclZsO4IWmmxQ==",
+-      "dev": true,
+-      "license": "ISC",
+-      "engines": {
+-        "node": ">= 12"
+-      }
+-    },
+-    "node_modules/cliui": {
+-      "version": "8.0.1",
+-      "resolved": "https://registry.npmjs.org/cliui/-/cliui-8.0.1.tgz",
+-      "integrity": "sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==",
+-      "dev": true,
+-      "license": "ISC",
+-      "dependencies": {
+-        "string-width": "^4.2.0",
+-        "strip-ansi": "^6.0.1",
+-        "wrap-ansi": "^7.0.0"
+-      },
+-      "engines": {
+-        "node": ">=12"
+-      }
+-    },
+     "node_modules/color-convert": {
+       "version": "2.0.1",
+       "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz",
+       "integrity": "sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==",
+       "dev": true,
+       "license": "MIT",
+@@ -3413,19 +2912,12 @@
+       "version": "1.5.432",
+       "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.5.432.tgz",
+       "integrity": "sha512-4qa5o+sI3qFR+p1C6wZvY99x6q/3tR34n+ezZvWiJ9s0HJaaKwN6h1HTupFfv4fiSdQYMZWtVFBuzHdAXo1BnA==",
+       "dev": true,
+       "license": "ISC"
+     },
+-    "node_modules/emoji-regex": {
+-      "version": "8.0.0",
+-      "resolved": "https://registry.npmjs.org/emoji-regex/-/emoji-regex-8.0.0.tgz",
+-      "integrity": "sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==",
+-      "dev": true,
+-      "license": "MIT"
+-    },
+     "node_modules/entities": {
+       "version": "8.1.0",
+       "resolved": "https://registry.npmjs.org/entities/-/entities-8.1.0.tgz",
+       "integrity": "sha512-kxL7msIffSuh9aaFAMD7rxAIuTRMAHMeBtgHW2yUdWw732ZNh4MehkF2gdjvtdmikkaIP9bFDDJOPlsvm7avrA==",
+       "dev": true,
+       "license": "BSD-2-Clause",
+@@ -3731,39 +3223,12 @@
+       "version": "2.0.6",
+       "resolved": "https://registry.npmjs.org/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz",
+       "integrity": "sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==",
+       "dev": true,
+       "license": "MIT"
+     },
+-    "node_modules/fast-string-truncated-width": {
+-      "version": "3.0.3",
+-      "resolved": "https://registry.npmjs.org/fast-string-truncated-width/-/fast-string-truncated-width-3.0.3.tgz",
+-      "integrity": "sha512-0jjjIEL6+0jag3l2XWWizO64/aZVtpiGE3t0Zgqxv0DPuxiMjvB3M24fCyhZUO4KomJQPj3LTSUnDP3GpdwC0g==",
+-      "dev": true,
+-      "license": "MIT"
+-    },
+-    "node_modules/fast-string-width": {
+-      "version": "3.0.2",
+-      "resolved": "https://registry.npmjs.org/fast-string-width/-/fast-string-width-3.0.2.tgz",
+-      "integrity": "sha512-gX8LrtNEI5hq8DVUfRQMbr5lpaS4nMIWV+7XEbXk2b8kiQIizgnlr12B4dA3ZEx3308ze0O4Q1R+cHts8kyUJg==",
+-      "dev": true,
+-      "license": "MIT",
+-      "dependencies": {
+-        "fast-string-truncated-width": "^3.0.2"
+-      }
+-    },
+-    "node_modules/fast-wrap-ansi": {
+-      "version": "0.2.2",
+-      "resolved": "https://registry.npmjs.org/fast-wrap-ansi/-/fast-wrap-ansi-0.2.2.tgz",
+-      "integrity": "sha512-7F2Fl+TjRSenLqlU3UjSH0iyqopqoZIu7eZVpEirP2g1GtWa2G/ecEmBdgz31+Mxr+ELclgg6sokpSFIQiZ02Q==",
+-      "dev": true,
+-      "license": "MIT",
+-      "dependencies": {
+-        "fast-string-width": "^3.0.2"
+-      }
+-    },
+     "node_modules/fdir": {
+       "version": "6.5.0",
+       "resolved": "https://registry.npmjs.org/fdir/-/fdir-6.5.0.tgz",
+       "integrity": "sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==",
+       "dev": true,
+       "license": "MIT",
+@@ -3852,22 +3317,12 @@
+       "dev": true,
+       "license": "MIT",
+       "engines": {
+         "node": ">=6.9.0"
+       }
+     },
+-    "node_modules/get-caller-file": {
+-      "version": "2.0.5",
+-      "resolved": "https://registry.npmjs.org/get-caller-file/-/get-caller-file-2.0.5.tgz",
+-      "integrity": "sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==",
+-      "dev": true,
+-      "license": "ISC",
+-      "engines": {
+-        "node": "6.* || 8.* || >= 10.*"
+-      }
+-    },
+     "node_modules/glob-parent": {
+       "version": "6.0.2",
+       "resolved": "https://registry.npmjs.org/glob-parent/-/glob-parent-6.0.2.tgz",
+       "integrity": "sha512-XxwI8EOhVQgWp6iDL+3b0r86f4d6AX6zSU55HfB4ydCEuXLXc5FcYeOu+nnGftS4TEju/11rt4KJPTMgbfmv4A==",
+       "dev": true,
+       "license": "ISC",
+@@ -3888,50 +3343,22 @@
+         "node": ">=18"
+       },
+       "funding": {
+         "url": "https://github.com/sponsors/sindresorhus"
+       }
+     },
+-    "node_modules/graphql": {
+-      "version": "16.14.2",
+-      "resolved": "https://registry.npmjs.org/graphql/-/graphql-16.14.2.tgz",
+-      "integrity": "sha512-Chq1s4CY7jmh8gO2qvLIJyfCDIN+EHLFW/9iShnp1z8FjBQMoodWP1kDC36VAMXXIvAjj4ARa7ntfAV2BrjsbA==",
+-      "dev": true,
+-      "license": "MIT",
+-      "engines": {
+-        "node": "^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0"
+-      }
+-    },
+     "node_modules/has-flag": {
+       "version": "4.0.0",
+       "resolved": "https://registry.npmjs.org/has-flag/-/has-flag-4.0.0.tgz",
+       "integrity": "sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==",
+       "dev": true,
+       "license": "MIT",
+       "engines": {
+         "node": ">=8"
+       }
+     },
+-    "node_modules/headers-polyfill": {
+-      "version": "5.0.1",
+-      "resolved": "https://registry.npmjs.org/headers-polyfill/-/headers-polyfill-5.0.1.tgz",
+-      "integrity": "sha512-1TJ6Fih/b8h5TIcv+1+Hw0PDQWJTKDKzFZzcKOiW1wJza3XoAQlkCuXLbymPYB8+ZQyw8mHvdw560e8zVFIWyA==",
+-      "dev": true,
+-      "license": "MIT",
+-      "dependencies": {
+-        "@types/set-cookie-parser": "^2.4.10",
+-        "set-cookie-parser": "^3.0.1"
+-      }
+-    },
+-    "node_modules/headers-polyfill/node_modules/set-cookie-parser": {
+-      "version": "3.1.2",
+-      "resolved": "https://registry.npmjs.org/set-cookie-parser/-/set-cookie-parser-3.1.2.tgz",
+-      "integrity": "sha512-5/r/lTwbJ3zQ+qwdUFZYeRNqda7P5HD8zQKqlSjdGt1/S0cjLAphHusj4Y58ahDtWn/g32xrIS58/ikOvwl0Lw==",
+-      "dev": true,
+-      "license": "MIT"
+-    },
+     "node_modules/hermes-estree": {
+       "version": "0.25.1",
+       "resolved": "https://registry.npmjs.org/hermes-estree/-/hermes-estree-0.25.1.tgz",
+       "integrity": "sha512-0wUoCcLp+5Ev5pDW2OriHC2MJCbwLwuRx+gAqMTOkGKJJiBCLjtrvy4PWUGn6MIVefecRpzoOZ/UV6iGdOr+Cw==",
+       "dev": true,
+       "license": "MIT"
+@@ -4054,22 +3481,12 @@
+       "dev": true,
+       "license": "MIT",
+       "engines": {
+         "node": ">=0.10.0"
+       }
+     },
+-    "node_modules/is-fullwidth-code-point": {
+-      "version": "3.0.0",
+-      "resolved": "https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz",
+-      "integrity": "sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==",
+-      "dev": true,
+-      "license": "MIT",
+-      "engines": {
+-        "node": ">=8"
+-      }
+-    },
+     "node_modules/is-glob": {
+       "version": "4.0.3",
+       "resolved": "https://registry.npmjs.org/is-glob/-/is-glob-4.0.3.tgz",
+       "integrity": "sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==",
+       "dev": true,
+       "license": "MIT",
+@@ -4077,19 +3494,12 @@
+         "is-extglob": "^2.1.1"
+       },
+       "engines": {
+         "node": ">=0.10.0"
+       }
+     },
+-    "node_modules/is-node-process": {
+-      "version": "1.2.0",
+-      "resolved": "https://registry.npmjs.org/is-node-process/-/is-node-process-1.2.0.tgz",
+-      "integrity": "sha512-Vg4o6/fqPxIjtxgUH5QLJhwZ7gW5diGCVlXpuUfELC62CuxM1iHcRe51f2W1FDy04Ai4KJkagKjx3XaqyfRKXw==",
+-      "dev": true,
+-      "license": "MIT"
+-    },
+     "node_modules/is-potential-custom-element-name": {
+       "version": "1.0.1",
+       "resolved": "https://registry.npmjs.org/is-potential-custom-element-name/-/is-potential-custom-element-name-1.0.1.tgz",
+       "integrity": "sha512-bCYeRA2rVibKZd+s2625gGnGF/t7DSqDs4dP7CrLA1m7jKWz6pps0LpYLJN8Q64HtmPKJ1hrN3nzPNKFEKOUiQ==",
+       "dev": true,
+       "license": "MIT"
+@@ -4598,67 +4008,12 @@
+       "version": "2.1.3",
+       "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz",
+       "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==",
+       "dev": true,
+       "license": "MIT"
+     },
+-    "node_modules/msw": {
+-      "version": "2.15.0",
+-      "resolved": "https://registry.npmjs.org/msw/-/msw-2.15.0.tgz",
+-      "integrity": "sha512-2wQAmKkQKxRuXvYJxVhPGG0wZNBQyD06oJvxqw90XqLvptdqxdlHrFUfEteKkpaNORX3Xzc+HtEl/q0nfmN2wQ==",
+-      "dev": true,
+-      "hasInstallScript": true,
+-      "license": "MIT",
+-      "dependencies": {
+-        "@inquirer/confirm": "^6.0.11",
+-        "@mswjs/interceptors": "^0.41.3",
+-        "@open-draft/deferred-promise": "^3.0.0",
+-        "@types/statuses": "^2.0.6",
+-        "cookie": "^1.1.1",
+-        "graphql": "^16.13.2",
+-        "headers-polyfill": "^5.0.1",
+-        "is-node-process": "^1.2.0",
+-        "outvariant": "^1.4.3",
+-        "path-to-regexp": "^6.3.0",
+-        "picocolors": "^1.1.1",
+-        "rettime": "^0.11.11",
+-        "statuses": "^2.0.2",
+-        "strict-event-emitter": "^0.5.1",
+-        "tough-cookie": "^6.0.1",
+-        "type-fest": "^5.5.0",
+-        "until-async": "^3.0.2",
+-        "yargs": "^17.7.2"
+-      },
+-      "bin": {
+-        "msw": "cli/index.js"
+-      },
+-      "engines": {
+-        "node": ">=18"
+-      },
+-      "funding": {
+-        "url": "https://github.com/sponsors/mswjs"
+-      },
+-      "peerDependencies": {
+-        "typescript": ">= 4.8.x"
+-      },
+-      "peerDependenciesMeta": {
+-        "typescript": {
+-          "optional": true
+-        }
+-      }
+-    },
+-    "node_modules/mute-stream": {
+-      "version": "3.0.0",
+-      "resolved": "https://registry.npmjs.org/mute-stream/-/mute-stream-3.0.0.tgz",
+-      "integrity": "sha512-dkEJPVvun4FryqBmZ5KhDo0K9iDXAwn08tMLDinNdRBNPcYEDiWYysLcc6k3mjTMlbP9KyylvRpd4wFtwrT9rw==",
+-      "dev": true,
+-      "license": "ISC",
+-      "engines": {
+-        "node": "^20.17.0 || >=22.9.0"
+-      }
+-    },
+     "node_modules/nanoid": {
+       "version": "3.3.19",
+       "resolved": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.19.tgz",
+       "integrity": "sha512-Y2tUNy4ouw6tq5oDSKeQYGOyhkUBhNOcGV/02KC+6kd9eDGqdZd++mjMiIDilrBYvjEnCYvVtsuHCuP+okSfug==",
+       "dev": true,
+       "funding": [
+@@ -4707,68 +4062,12 @@
+         "word-wrap": "^1.2.5"
+       },
+       "engines": {
+         "node": ">= 0.8.0"
+       }
+     },
+-    "node_modules/outvariant": {
+-      "version": "1.4.3",
+-      "resolved": "https://registry.npmjs.org/outvariant/-/outvariant-1.4.3.tgz",
+-      "integrity": "sha512-+Sl2UErvtsoajRDKCE5/dBz4DIvHXQQnAxtQTF04OJxY0+DyZXSo5P5Bb7XYWOh81syohlYL24hbDwxedPUJCA==",
+-      "dev": true,
+-      "license": "MIT"
+-    },
+-    "node_modules/oxlint": {
+-      "version": "1.83.0",
+-      "resolved": "https://registry.npmjs.org/oxlint/-/oxlint-1.83.0.tgz",
+-      "integrity": "sha512-cyDzSzaw3uzP0TeCeq3lLRPPoaUxkbB4ZOXj+kn+5r+BX9V+4bNVGk9lxer+WrgcpebH4JxLlJ3KQjveVztOLQ==",
+-      "dev": true,
+-      "license": "MIT",
+-      "bin": {
+-        "oxlint": "bin/oxlint"
+-      },
+-      "engines": {
+-        "node": "^20.19.0 || >=22.12.0"
+-      },
+-      "funding": {
+-        "url": "https://github.com/sponsors/oxc-project"
+-      },
+-      "optionalDependencies": {
+-        "@oxlint/binding-android-arm-eabi": "1.83.0",
+-        "@oxlint/binding-android-arm64": "1.83.0",
+-        "@oxlint/binding-darwin-arm64": "1.83.0",
+-        "@oxlint/binding-darwin-x64": "1.83.0",
+-        "@oxlint/binding-freebsd-x64": "1.83.0",
+-        "@oxlint/binding-linux-arm-gnueabihf": "1.83.0",
+-        "@oxlint/binding-linux-arm-musleabihf": "1.83.0",
+-        "@oxlint/binding-linux-arm64-gnu": "1.83.0",
+-        "@oxlint/binding-linux-arm64-musl": "1.83.0",
+-        "@oxlint/binding-linux-ppc64-gnu": "1.83.0",
+-        "@oxlint/binding-linux-riscv64-gnu": "1.83.0",
+-        "@oxlint/binding-linux-riscv64-musl": "1.83.0",
+-        "@oxlint/binding-linux-s390x-gnu": "1.83.0",
+-        "@oxlint/binding-linux-x64-gnu": "1.83.0",
+-        "@oxlint/binding-linux-x64-musl": "1.83.0",
+-        "@oxlint/binding-openharmony-arm64": "1.83.0",
+-        "@oxlint/binding-win32-arm64-msvc": "1.83.0",
+-        "@oxlint/binding-win32-ia32-msvc": "1.83.0",
+-        "@oxlint/binding-win32-x64-msvc": "1.83.0"
+-      },
+-      "peerDependencies": {
+-        "oxlint-tsgolint": ">=7.0.2001",
+-        "vite-plus": "*"
+-      },
+-      "peerDependenciesMeta": {
+-        "oxlint-tsgolint": {
+-          "optional": true
+-        },
+-        "vite-plus": {
+-          "optional": true
+-        }
+-      }
+-    },
+     "node_modules/p-limit": {
+       "version": "3.1.0",
+       "resolved": "https://registry.npmjs.org/p-limit/-/p-limit-3.1.0.tgz",
+       "integrity": "sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==",
+       "dev": true,
+       "license": "MIT",
+@@ -4841,19 +4140,12 @@
+       "dev": true,
+       "license": "MIT",
+       "engines": {
+         "node": ">=8"
+       }
+     },
+-    "node_modules/path-to-regexp": {
+-      "version": "6.3.0",
+-      "resolved": "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-6.3.0.tgz",
+-      "integrity": "sha512-Yhpw4T9C6hPpgPeA28us07OJeqZ5EzQTkbfwuhsUg0c237RomFoETJgmp2sa3F/41gfLE6G5cqcYwznmeEeOlQ==",
+-      "dev": true,
+-      "license": "MIT"
+-    },
+     "node_modules/pathe": {
+       "version": "2.0.3",
+       "resolved": "https://registry.npmjs.org/pathe/-/pathe-2.0.3.tgz",
+       "integrity": "sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==",
+       "dev": true,
+       "license": "MIT"
+@@ -5061,22 +4353,12 @@
+         "strip-indent": "^3.0.0"
+       },
+       "engines": {
+         "node": ">=8"
+       }
+     },
+-    "node_modules/require-directory": {
+-      "version": "2.1.1",
+-      "resolved": "https://registry.npmjs.org/require-directory/-/require-directory-2.1.1.tgz",
+-      "integrity": "sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==",
+-      "dev": true,
+-      "license": "MIT",
+-      "engines": {
+-        "node": ">=0.10.0"
+-      }
+-    },
+     "node_modules/require-from-string": {
+       "version": "2.0.2",
+       "resolved": "https://registry.npmjs.org/require-from-string/-/require-from-string-2.0.2.tgz",
+       "integrity": "sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==",
+       "dev": true,
+       "license": "MIT",
+@@ -5091,19 +4373,12 @@
+       "dev": true,
+       "license": "MIT",
+       "engines": {
+         "node": ">=4"
+       }
+     },
+-    "node_modules/rettime": {
+-      "version": "0.11.11",
+-      "resolved": "https://registry.npmjs.org/rettime/-/rettime-0.11.11.tgz",
+-      "integrity": "sha512-ILJRqVWBCTlg9r42fFgwVZx1gnFAcQF8mRoMkbgQfIrjEDf9nbBFDFx00oloOa+Q869FUtaYDXZvEfnecQSCoQ==",
+-      "dev": true,
+-      "license": "MIT"
+-    },
+     "node_modules/rolldown": {
+       "version": "1.2.9",
+       "resolved": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.9.tgz",
+       "integrity": "sha512-hx/Pv0N1haXRb11qkfnK5MXB/iqr7i0yjWQqmO9uHqZpBgQSqzc8UsSnEpalsh+j1I8qQ2CkXAkJC8Br3dKSlg==",
+       "dev": true,
+       "license": "MIT",
+@@ -5257,25 +4532,12 @@
+       "version": "2.0.0",
+       "resolved": "https://registry.npmjs.org/siginfo/-/siginfo-2.0.0.tgz",
+       "integrity": "sha512-ybx0WO1/8bSBLEWXZvEd7gMW3Sn3JFlW3TvX1nREbDLRNQNaeNN8WK0meBwPdAaOI7TtRRRJn/Es1zhrrCHu7g==",
+       "dev": true,
+       "license": "ISC"
+     },
+-    "node_modules/signal-exit": {
+-      "version": "4.1.0",
+-      "resolved": "https://registry.npmjs.org/signal-exit/-/signal-exit-4.1.0.tgz",
+-      "integrity": "sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==",
+-      "dev": true,
+-      "license": "ISC",
+-      "engines": {
+-        "node": ">=14"
+-      },
+-      "funding": {
+-        "url": "https://github.com/sponsors/isaacs"
+-      }
+-    },
+     "node_modules/source-map-js": {
+       "version": "1.2.1",
+       "resolved": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz",
+       "integrity": "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==",
+       "dev": true,
+       "license": "BSD-3-Clause",
+@@ -5287,64 +4549,19 @@
+       "version": "0.0.2",
+       "resolved": "https://registry.npmjs.org/stackback/-/stackback-0.0.2.tgz",
+       "integrity": "sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw==",
+       "dev": true,
+       "license": "MIT"
+     },
+-    "node_modules/statuses": {
+-      "version": "2.0.2",
+-      "resolved": "https://registry.npmjs.org/statuses/-/statuses-2.0.2.tgz",
+-      "integrity": "sha512-DvEy55V3DB7uknRo+4iOGT5fP1slR8wQohVdknigZPMpMstaKJQWhwiYBACJE3Ul2pTnATihhBYnRhZQHGBiRw==",
+-      "dev": true,
+-      "license": "MIT",
+-      "engines": {
+-        "node": ">= 0.8"
+-      }
+-    },
+     "node_modules/std-env": {
+       "version": "3.10.0",
+       "resolved": "https://registry.npmjs.org/std-env/-/std-env-3.10.0.tgz",
+       "integrity": "sha512-5GS12FdOZNliM5mAOxFRg7Ir0pWz8MdpYm6AY6VPkGpbA7ZzmbzNcBJQ0GPvvyWgcY7QAhCgf9Uy89I03faLkg==",
+       "dev": true,
+       "license": "MIT"
+     },
+-    "node_modules/strict-event-emitter": {
+-      "version": "0.5.1",
+-      "resolved": "https://registry.npmjs.org/strict-event-emitter/-/strict-event-emitter-0.5.1.tgz",
+-      "integrity": "sha512-vMgjE/GGEPEFnhFub6pa4FmJBRBVOLpIII2hvCZ8Kzb7K0hlHo7mQv6xYrBvCL2LtAIBwFUK8wvuJgTVSQ5MFQ==",
+-      "dev": true,
+-      "license": "MIT"
+-    },
+-    "node_modules/string-width": {
+-      "version": "4.2.3",
+-      "resolved": "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz",
+-      "integrity": "sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==",
+-      "dev": true,
+-      "license": "MIT",
+-      "dependencies": {
+-        "emoji-regex": "^8.0.0",
+-        "is-fullwidth-code-point": "^3.0.0",
+-        "strip-ansi": "^6.0.1"
+-      },
+-      "engines": {
+-        "node": ">=8"
+-      }
+-    },
+-    "node_modules/strip-ansi": {
+-      "version": "6.0.1",
+-      "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz",
+-      "integrity": "sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==",
+-      "dev": true,
+-      "license": "MIT",
+-      "dependencies": {
+-        "ansi-regex": "^5.0.1"
+-      },
+-      "engines": {
+-        "node": ">=8"
+-      }
+-    },
+     "node_modules/strip-indent": {
+       "version": "3.0.0",
+       "resolved": "https://registry.npmjs.org/strip-indent/-/strip-indent-3.0.0.tgz",
+       "integrity": "sha512-laJTa3Jb+VQpaC6DseHhF7dXVqHTfJPCRDaEbid/drOhgitgYku/letMUqOXFoWV0zIIUbjpdH2t+tYj4bQMRQ==",
+       "dev": true,
+       "license": "MIT",
+@@ -5405,25 +4622,12 @@
+       "version": "3.2.4",
+       "resolved": "https://registry.npmjs.org/symbol-tree/-/symbol-tree-3.2.4.tgz",
+       "integrity": "sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==",
+       "dev": true,
+       "license": "MIT"
+     },
+-    "node_modules/tagged-tag": {
+-      "version": "1.0.0",
+-      "resolved": "https://registry.npmjs.org/tagged-tag/-/tagged-tag-1.0.0.tgz",
+-      "integrity": "sha512-yEFYrVhod+hdNyx7g5Bnkkb0G6si8HJurOoOEgC8B/O0uXLHlaey/65KRv6cuWBNhBgHKAROVpc7QyYqE5gFng==",
+-      "dev": true,
+-      "license": "MIT",
+-      "engines": {
+-        "node": ">=20"
+-      },
+-      "funding": {
+-        "url": "https://github.com/sponsors/sindresorhus"
+-      }
+-    },
+     "node_modules/tinybench": {
+       "version": "2.9.0",
+       "resolved": "https://registry.npmjs.org/tinybench/-/tinybench-2.9.0.tgz",
+       "integrity": "sha512-0+DUvqWMValLmha6lr4kD8iAMK1HzV0/aKnCtWb9v9641TnP/MFb7Pc2bxoxQjTXAErryXVgUOfv2YqNllqGeg==",
+       "dev": true,
+       "license": "MIT"
+@@ -5551,28 +4755,12 @@
+         "prelude-ls": "^1.2.1"
+       },
+       "engines": {
+         "node": ">= 0.8.0"
+       }
+     },
+-    "node_modules/type-fest": {
+-      "version": "5.10.0",
+-      "resolved": "https://registry.npmjs.org/type-fest/-/type-fest-5.10.0.tgz",
+-      "integrity": "sha512-NoSdpq/WEiAg5sjmBkmV/hfxv6HJH4NqPNrqjtSO5CwRmpsDfaf4begxW34KdJykH/l1yHtwBWQkCRdoXO8mPA==",
+-      "dev": true,
+-      "license": "(MIT OR CC0-1.0)",
+-      "dependencies": {
+-        "tagged-tag": "^1.0.0"
+-      },
+-      "engines": {
+-        "node": ">=20"
+-      },
+-      "funding": {
+-        "url": "https://github.com/sponsors/sindresorhus"
+-      }
+-    },
+     "node_modules/typescript": {
+       "version": "6.0.3",
+       "resolved": "https://registry.npmjs.org/typescript/-/typescript-6.0.3.tgz",
+       "integrity": "sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==",
+       "dev": true,
+       "license": "Apache-2.0",
+@@ -5612,22 +4800,12 @@
+       "version": "7.18.2",
+       "resolved": "https://registry.npmjs.org/undici-types/-/undici-types-7.18.2.tgz",
+       "integrity": "sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==",
+       "dev": true,
+       "license": "MIT"
+     },
+-    "node_modules/until-async": {
+-      "version": "3.0.2",
+-      "resolved": "https://registry.npmjs.org/until-async/-/until-async-3.0.2.tgz",
+-      "integrity": "sha512-IiSk4HlzAMqTUseHHe3VhIGyuFmN90zMTpD3Z3y8jeQbzLIq500MVM7Jq2vUAnTKAFPJrqwkzr6PoTcPhGcOiw==",
+-      "dev": true,
+-      "license": "MIT",
+-      "funding": {
+-        "url": "https://github.com/sponsors/kettanaito"
+-      }
+-    },
+     "node_modules/update-browserslist-db": {
+       "version": "1.3.3",
+       "resolved": "https://registry.npmjs.org/update-browserslist-db/-/update-browserslist-db-1.3.3.tgz",
+       "integrity": "sha512-pJ2sYawQS0R/WI928Gj5GlPhTGzbMelq0+4INtSYNDV9ErKJcX6xjGWkoG/VnB3dpUm00zALaqkrUD77pO5TDQ==",
+       "dev": true,
+       "funding": [
+@@ -6118,30 +5296,12 @@
+       "dev": true,
+       "license": "MIT",
+       "engines": {
+         "node": ">=0.10.0"
+       }
+     },
+-    "node_modules/wrap-ansi": {
+-      "version": "7.0.0",
+-      "resolved": "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-7.0.0.tgz",
+-      "integrity": "sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==",
+-      "dev": true,
+-      "license": "MIT",
+-      "dependencies": {
+-        "ansi-styles": "^4.0.0",
+-        "string-width": "^4.1.0",
+-        "strip-ansi": "^6.0.0"
+-      },
+-      "engines": {
+-        "node": ">=10"
+-      },
+-      "funding": {
+-        "url": "https://github.com/chalk/wrap-ansi?sponsor=1"
+-      }
+-    },
+     "node_modules/ws": {
+       "version": "8.21.3",
+       "resolved": "https://registry.npmjs.org/ws/-/ws-8.21.3.tgz",
+       "integrity": "sha512-201TZ/kPWxoPr/OKWjquZR1SWKXcvxdH+e1xrx89b3YbmzLMFCLfnaG1HFIgWzJOEWZ7MvpK++odZufgYR50Rw==",
+       "dev": true,
+       "license": "MIT",
+@@ -6175,58 +5335,19 @@
+       "version": "2.2.0",
+       "resolved": "https://registry.npmjs.org/xmlchars/-/xmlchars-2.2.0.tgz",
+       "integrity": "sha512-JZnDKK8B0RCDw84FNdDAIpZK+JuJw+s7Lz8nksI7SIuU3UXJJslUthsi+uWBUYOwPFwW7W7PRLRfUKpxjtjFCw==",
+       "dev": true,
+       "license": "MIT"
+     },
+-    "node_modules/y18n": {
+-      "version": "5.0.8",
+-      "resolved": "https://registry.npmjs.org/y18n/-/y18n-5.0.8.tgz",
+-      "integrity": "sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==",
+-      "dev": true,
+-      "license": "ISC",
+-      "engines": {
+-        "node": ">=10"
+-      }
+-    },
+     "node_modules/yallist": {
+       "version": "3.1.1",
+       "resolved": "https://registry.npmjs.org/yallist/-/yallist-3.1.1.tgz",
+       "integrity": "sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==",
+       "dev": true,
+       "license": "ISC"
+     },
+-    "node_modules/yargs": {
+-      "version": "17.7.3",
+-      "resolved": "https://registry.npmjs.org/yargs/-/yargs-17.7.3.tgz",
+-      "integrity": "sha512-GZtjxm/J/4TSxuL3FNYjCmLktBTnIw/rVmKSIyKeYAZpmJB2ig9VauCC5xsa82GNKVKDAqpOn3KVzNt0zmrU0g==",
+-      "dev": true,
+-      "license": "MIT",
+-      "dependencies": {
+-        "cliui": "^8.0.1",
+-        "escalade": "^3.1.1",
+-        "get-caller-file": "^2.0.5",
+-        "require-directory": "^2.1.1",
+-        "string-width": "^4.2.3",
+-        "y18n": "^5.0.5",
+-        "yargs-parser": "^21.1.1"
+-      },
+-      "engines": {
+-        "node": ">=12"
+-      }
+-    },
+-    "node_modules/yargs-parser": {
+-      "version": "21.1.1",
+-      "resolved": "https://registry.npmjs.org/yargs-parser/-/yargs-parser-21.1.1.tgz",
+-      "integrity": "sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==",
+-      "dev": true,
+-      "license": "ISC",
+-      "engines": {
+-        "node": ">=12"
+-      }
+-    },
+     "node_modules/yocto-queue": {
+       "version": "0.1.0",
+       "resolved": "https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz",
+       "integrity": "sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==",
+       "dev": true,
+       "license": "MIT",
+diff --git a/src/App.tsx b/src/App.tsx
+index 4bdc968..bbe9b3c 100644
+--- a/src/App.tsx
++++ b/src/App.tsx
+@@ -1,23 +1,30 @@
+ import { BrowserRouter, Route, Routes } from 'react-router-dom'
+ import { Layout } from './components/Layout'
++import { OrbitDashboard } from './pages/OrbitDashboard'
+ import { Dashboard } from './pages/Dashboard'
+ import { IncidentDetailPage } from './pages/IncidentDetail'
+ import { Incidents } from './pages/Incidents'
+ import { Services } from './pages/Services'
+ import { Settings } from './pages/Settings'
+ import './App.css'
+ 
+ export default function App() {
+-  return <BrowserRouter>
+-    <Routes>
+-      <Route element={<Layout />}>
+-        <Route path="/" element={<Dashboard />} />
+-        <Route path="/incidents" element={<Incidents />} />
+-        <Route path="/incidents/:id" element={<IncidentDetailPage />} />
+-        <Route path="/services" element={<Services />} />
+-        <Route path="/settings" element={<Settings />} />
+-      </Route>
+-    </Routes>
+-  </BrowserRouter>
+-}
++  return (
++    <BrowserRouter>
++      <Routes>
++        {/* Main ORBIT Global Intelligence Dashboard */}
++        <Route path="/" element={<OrbitDashboard />} />
++        <Route path="/orbit" element={<OrbitDashboard />} />
+ 
++        {/* System Operations & Console Sub-routes */}
++        <Route element={<Layout />}>
++          <Route path="/ops" element={<Dashboard />} />
++          <Route path="/incidents" element={<Incidents />} />
++          <Route path="/incidents/:id" element={<IncidentDetailPage />} />
++          <Route path="/services" element={<Services />} />
++          <Route path="/settings" element={<Settings />} />
++        </Route>
++      </Routes>
++    </BrowserRouter>
++  )
++}
+diff --git a/src/components/Layout.tsx b/src/components/Layout.tsx
+index 5e5b737..402be8e 100644
+--- a/src/components/Layout.tsx
++++ b/src/components/Layout.tsx
+@@ -1,38 +1,41 @@
+ import { NavLink, Outlet } from 'react-router-dom'
+ 
+ const links = [
+-  ['/', 'Dashboard'],
+-  ['/incidents', 'Incidents'],
+-  ['/services', 'Services'],
+-  ['/settings', 'Settings'],
++  ['/orbit', '🌐 ORBIT Console'],
++  ['/ops', '📊 Operations'],
++  ['/incidents', '🚨 Incidents'],
++  ['/services', '⚙️ Services'],
++  ['/settings', '🔧 Settings'],
+ ] as const
+ 
+ export function Layout() {
+   return (
+     <div className="app-shell">
+       <header className="topbar">
+-        <div className="brand-mark">IC</div>
+-        <strong>Incident Console</strong>
++        <div className="brand-mark" style={{ background: '#00f0ff', color: '#000', fontWeight: 800 }}>
++          ORBIT
++        </div>
++        <strong>ORBIT Global Intelligence System</strong>
+         <div className="top-actions">
+           <span className="notification">
+             ● <b>3</b>
+           </span>
+           <span>Alex Morgan ▾</span>
+         </div>
+       </header>
+       <div className="workspace">
+         <aside className="sidebar">
+-          <p className="eyebrow">OPERATIONS</p>
++          <p className="eyebrow">NAVIGATION</p>
+           {links.map(([to, label]) => (
+-            <NavLink key={to} to={to} end={to === '/'}>
++            <NavLink key={to} to={to} end={to === '/orbit'}>
+               {label}
+             </NavLink>
+           ))}
+           <div className="sidebar-footer">
+-            <span className="status-dot" /> All systems monitored
++            <span className="status-dot" /> Live Intelligence Feed
+           </div>
+         </aside>
+         <main className="content">
+           <Outlet />
+         </main>
+       </div>
+diff --git a/src/components/orbit/IntelligencePanel.tsx b/src/components/orbit/IntelligencePanel.tsx
+new file mode 100644
+index 0000000..7f88721
+--- /dev/null
++++ b/src/components/orbit/IntelligencePanel.tsx
+@@ -0,0 +1,294 @@
++import { useState, useEffect, type FC } from 'react'
++import type { OrbitEvent, RegionalSnapshot } from '../../types/orbit'
++
++interface IntelligencePanelProps {
++  events: OrbitEvent[]
++  selectedEvent: OrbitEvent | null
++  onSelectEvent: (evt: OrbitEvent) => void
++  regionalSnapshots: Record<string, RegionalSnapshot>
++  selectedRegion: string
++}
++
++const SEVERITY_COLORS: Record<string, string> = {
++  critical: '#ef4444',
++  high: '#f97316',
++  elevated: '#f59e0b',
++  normal: '#10b981',
++  info: '#3b82f6',
++}
++
++const DOMAIN_ICONS: Record<string, string> = {
++  geopolitical: '🌐',
++  healthcare: '🩺',
++  environmental: '🌿',
++  disasters: '⚠️',
++  emerging: '📡',
++  cross_domain: '🔀',
++}
++
++export const IntelligencePanel: FC<IntelligencePanelProps> = ({
++  events,
++  selectedEvent,
++  onSelectEvent,
++  regionalSnapshots,
++  selectedRegion,
++}) => {
++  const [activeTab, setActiveTab] = useState<'feed' | 'detail' | 'regional'>('feed')
++
++  // Auto-switch to detail tab when an event is selected
++  useEffect(() => {
++    if (selectedEvent) {
++      setActiveTab('detail')
++    }
++  }, [selectedEvent])
++
++  const regionSnapshot =
++    regionalSnapshots[selectedRegion !== 'all' ? selectedRegion : 'Middle East'] ||
++    regionalSnapshots['Middle East']
++
++  return (
++    <aside className="orbit-sidebar-right">
++      <div className="orbit-tabs">
++        <button
++          className={`orbit-tab ${activeTab === 'feed' ? 'active' : ''}`}
++          onClick={() => setActiveTab('feed')}
++        >
++          LIVE FEED ({events.length})
++        </button>
++        <button
++          className={`orbit-tab ${activeTab === 'detail' ? 'active' : ''}`}
++          onClick={() => setActiveTab('detail')}
++        >
++          DOSSIER {selectedEvent ? '• SELECTED' : ''}
++        </button>
++        <button
++          className={`orbit-tab ${activeTab === 'regional' ? 'active' : ''}`}
++          onClick={() => setActiveTab('regional')}
++        >
++          REGIONAL SNAPSHOT
++        </button>
++      </div>
++
++      <div className="orbit-tab-content">
++        {/* Tab 1: Live Event Feed */}
++        {activeTab === 'feed' && (
++          <>
++            {events.length === 0 ? (
++              <div style={{ color: '#64748b', textAlign: 'center', marginTop: '40px', fontSize: '12px' }}>
++                No active signals matching filter parameters.
++              </div>
++            ) : (
++              events.map((evt) => {
++                const isSelected = selectedEvent?.id === evt.id
++                const color = SEVERITY_COLORS[evt.severity]
++
++                return (
++                  <div
++                    key={evt.id}
++                    className={`orbit-event-card ${isSelected ? 'selected' : ''}`}
++                    onClick={() => onSelectEvent(evt)}
++                  >
++                    <div className="orbit-card-top">
++                      <span
++                        className="orbit-sev-badge"
++                        style={{ backgroundColor: color }}
++                      >
++                        {evt.severity}
++                      </span>
++                      <span className="orbit-time-ago">
++                        {new Date(evt.timestamp).toLocaleTimeString([], {
++                          hour: '2-digit',
++                          minute: '2-digit',
++                        })}
++                      </span>
++                    </div>
++
++                    <div className="orbit-event-title">{evt.title}</div>
++
++                    <div className="orbit-event-meta">
++                      <span>
++                        {DOMAIN_ICONS[evt.domain]} {evt.domain.toUpperCase()}
++                      </span>
++                      <span>{evt.region}</span>
++                    </div>
++                  </div>
++                )
++              })
++            )}
++          </>
++        )}
++
++        {/* Tab 2: Event Deep Dive Dossier */}
++        {activeTab === 'detail' && (
++          <>
++            {selectedEvent ? (
++              <>
++                <div className="orbit-detail-header">
++                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
++                    <span
++                      className="orbit-sev-badge"
++                      style={{ backgroundColor: SEVERITY_COLORS[selectedEvent.severity] }}
++                    >
++                      {selectedEvent.severity.toUpperCase()}
++                    </span>
++                    <span style={{ fontSize: '10px', color: '#94a3b8' }}>
++                      TREND: {selectedEvent.trend.toUpperCase()}
++                    </span>
++                  </div>
++                  <h2 className="orbit-detail-title">{selectedEvent.title}</h2>
++                  <div style={{ fontSize: '11px', color: '#64748b', marginTop: '4px' }}>
++                    📍 {selectedEvent.latitude.toFixed(2)}°, {selectedEvent.longitude.toFixed(2)}° | {selectedEvent.country}
++                  </div>
++                </div>
++
++                {/* AI Executive Summary */}
++                <div className="orbit-ai-block">
++                  <div className="orbit-ai-label">
++                    <span>🤖</span> AI EXECUTIVE SUMMARY
++                  </div>
++                  <p style={{ margin: 0 }}>{selectedEvent.aiAnalysis.summary}</p>
++                </div>
++
++                {/* AI Risk Assessment */}
++                <div className="orbit-ai-block">
++                  <div className="orbit-ai-label">
++                    <span>🛡️</span> RISK & IMPLICATIONS
++                  </div>
++                  <p style={{ margin: 0 }}>{selectedEvent.aiAnalysis.riskAssessment}</p>
++                </div>
++
++                {/* Key Actors */}
++                <div>
++                  <span className="orbit-section-label">KEY ACTORS & ENTITIES</span>
++                  <div>
++                    {selectedEvent.aiAnalysis.keyActors.map((actor) => (
++                      <span key={actor} className="orbit-actors-tag">
++                        {actor}
++                      </span>
++                    ))}
++                  </div>
++                </div>
++
++                {/* Evidence Sources */}
++                <div>
++                  <span className="orbit-section-label">VERIFIED EVIDENCE & SOURCES</span>
++                  <div className="orbit-sources-list">
++                    {selectedEvent.sources.map((src, i) => (
++                      <div key={i} className="orbit-source-item">
++                        <div>
++                          <a
++                            href={src.url}
++                            target="_blank"
++                            rel="noopener noreferrer"
++                            className="orbit-source-link"
++                          >
++                            {src.title}
++                          </a>
++                          <div style={{ color: '#64748b', fontSize: '9px', marginTop: '2px' }}>
++                            {src.publisher} • {src.type.toUpperCase()}
++                          </div>
++                        </div>
++                        <div style={{ textAlign: 'right' }}>
++                          <span style={{ color: '#10b981', fontWeight: 700 }}>
++                            {src.credibilityScore}%
++                          </span>
++                          <div style={{ fontSize: '8px', color: '#64748b' }}>CONFIDENCE</div>
++                        </div>
++                      </div>
++                    ))}
++                  </div>
++                </div>
++              </>
++            ) : (
++              <div style={{ color: '#64748b', textAlign: 'center', marginTop: '40px', fontSize: '12px' }}>
++                Select an event from the map or live feed to inspect its dossier.
++              </div>
++            )}
++          </>
++        )}
++
++        {/* Tab 3: Regional Snapshot */}
++        {activeTab === 'regional' && (
++          <>
++            <div className="orbit-regional-card">
++              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
++                <span style={{ fontSize: '14px', fontWeight: 800, color: '#fff' }}>
++                  {regionSnapshot.regionName.toUpperCase()}
++                </span>
++                <span
++                  className="orbit-sev-badge"
++                  style={{ backgroundColor: SEVERITY_COLORS[regionSnapshot.threatLevel] }}
++                >
++                  {regionSnapshot.threatLevel.toUpperCase()}
++                </span>
++              </div>
++
++              <div style={{ fontSize: '11px', color: '#94a3b8' }}>
++                {regionSnapshot.regimeStatus}
++              </div>
++
++              <p style={{ fontSize: '11px', lineHeight: 1.4, margin: '4px 0' }}>
++                {regionSnapshot.summary}
++              </p>
++
++              {/* Risk Meters */}
++              <div className="orbit-risk-meter">
++                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px' }}>
++                  <span>Geopolitical Risk</span>
++                  <span style={{ color: '#f43f5e', fontWeight: 700 }}>{regionSnapshot.geopoliticalRiskScore}%</span>
++                </div>
++                <div className="orbit-meter-bar-bg">
++                  <div
++                    className="orbit-meter-bar-fill"
++                    style={{ width: `${regionSnapshot.geopoliticalRiskScore}%`, backgroundColor: '#f43f5e' }}
++                  />
++                </div>
++              </div>
++
++              <div className="orbit-risk-meter">
++                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px' }}>
++                  <span>Healthcare / Bio Risk</span>
++                  <span style={{ color: '#10b981', fontWeight: 700 }}>{regionSnapshot.healthcareRiskScore}%</span>
++                </div>
++                <div className="orbit-meter-bar-bg">
++                  <div
++                    className="orbit-meter-bar-fill"
++                    style={{ width: `${regionSnapshot.healthcareRiskScore}%`, backgroundColor: '#10b981' }}
++                  />
++                </div>
++              </div>
++
++              <div className="orbit-risk-meter">
++                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px' }}>
++                  <span>Environmental & Climate Risk</span>
++                  <span style={{ color: '#06b6d4', fontWeight: 700 }}>{regionSnapshot.environmentalRiskScore}%</span>
++                </div>
++                <div className="orbit-meter-bar-bg">
++                  <div
++                    className="orbit-meter-bar-fill"
++                    style={{ width: `${regionSnapshot.environmentalRiskScore}%`, backgroundColor: '#06b6d4' }}
++                  />
++                </div>
++              </div>
++
++              {/* Forecast */}
++              <div style={{ marginTop: '8px' }}>
++                <span className="orbit-section-label">24-HOUR OUTLOOK</span>
++                <p style={{ fontSize: '11px', color: '#cbd5e1', margin: '4px 0' }}>
++                  {regionSnapshot.outlook24h}
++                </p>
++              </div>
++
++              <div>
++                <span className="orbit-section-label">7-DAY OUTLOOK</span>
++                <p style={{ fontSize: '11px', color: '#cbd5e1', margin: '4px 0' }}>
++                  {regionSnapshot.outlook7d}
++                </p>
++              </div>
++            </div>
++          </>
++        )}
++      </div>
++    </aside>
++  )
++}
+diff --git a/src/components/orbit/LayersPanel.tsx b/src/components/orbit/LayersPanel.tsx
+new file mode 100644
+index 0000000..2d3ac2a
+--- /dev/null
++++ b/src/components/orbit/LayersPanel.tsx
+@@ -0,0 +1,101 @@
++import type { FC, CSSProperties } from 'react'
++import type { FilterState, OrbitDomain, SeverityLevel, OrbitEvent } from '../../types/orbit'
++
++interface LayersPanelProps {
++  filters: FilterState
++  onFilterChange: (updater: (prev: FilterState) => FilterState) => void
++  events: OrbitEvent[]
++}
++
++const LAYERS: { id: OrbitDomain; label: string; icon: string; color: string }[] = [
++  { id: 'geopolitical', label: 'Geopolitical Intelligence', icon: '🌐', color: '#f43f5e' },
++  { id: 'healthcare', label: 'Healthcare & Public Health', icon: '🩺', color: '#10b981' },
++  { id: 'environmental', label: 'Environmental & Climate', icon: '🌿', color: '#06b6d4' },
++  { id: 'disasters', label: 'Disasters & Hazards', icon: '⚠️', color: '#f59e0b' },
++  { id: 'emerging', label: 'Emerging Signals', icon: '📡', color: '#a855f7' },
++  { id: 'cross_domain', label: 'Cross-Domain Signals', icon: '🔀', color: '#ec4899' },
++]
++
++const SEVERITY_OPTIONS: { id: SeverityLevel | 'all'; label: string; color?: string }[] = [
++  { id: 'all', label: 'ALL' },
++  { id: 'elevated', label: 'ELEVATED+', color: '#f59e0b' },
++  { id: 'high', label: 'HIGH+', color: '#f97316' },
++  { id: 'critical', label: 'CRITICAL', color: '#ef4444' },
++]
++
++export const LayersPanel: FC<LayersPanelProps> = ({
++  filters,
++  onFilterChange,
++  events,
++}) => {
++  const toggleLayer = (domain: OrbitDomain) => {
++    onFilterChange((prev) => ({
++      ...prev,
++      activeLayers: {
++        ...prev.activeLayers,
++        [domain]: !prev.activeLayers[domain],
++      },
++    }))
++  }
++
++  // Count active events per layer
++  const getCount = (domain: OrbitDomain) => {
++    return events.filter((e) => e.domain === domain).length
++  }
++
++  return (
++    <aside className="orbit-sidebar-left">
++      <div className="orbit-panel-header">
++        <span className="orbit-panel-title">
++          <span>🎛️</span> INTELLIGENCE LAYERS
++        </span>
++      </div>
++
++      <div className="orbit-layer-list">
++        {LAYERS.map((layer) => {
++          const isActive = filters.activeLayers[layer.id]
++          const count = getCount(layer.id)
++
++          return (
++            <div
++              key={layer.id}
++              className={`orbit-layer-card ${isActive ? 'active' : ''}`}
++              style={{ '--orbit-layer-color': layer.color } as CSSProperties}
++              onClick={() => toggleLayer(layer.id)}
++            >
++              <div className="orbit-layer-info">
++                <input
++                  type="checkbox"
++                  className="orbit-toggle-checkbox"
++                  checked={isActive}
++                  onChange={() => {}} // handled by parent onClick
++                />
++                <span className="orbit-layer-icon">{layer.icon}</span>
++                <span className="orbit-layer-name">{layer.label}</span>
++              </div>
++              <span className="orbit-layer-badge">{count}</span>
++            </div>
++          )
++        })}
++      </div>
++
++      <div className="orbit-severity-filter">
++        <span className="orbit-section-label">MIN SEVERITY THRESHOLD</span>
++        <div className="orbit-severity-buttons">
++          {SEVERITY_OPTIONS.map((opt) => (
++            <button
++              key={opt.id}
++              className={`orbit-sev-btn ${filters.minSeverity === opt.id ? 'active' : ''}`}
++              style={{ '--sev-color': opt.color } as CSSProperties}
++              onClick={() =>
++                onFilterChange((prev) => ({ ...prev, minSeverity: opt.id }))
++              }
++            >
++              {opt.label}
++            </button>
++          ))}
++        </div>
++      </div>
++    </aside>
++  )
++}
+diff --git a/src/components/orbit/OrbitHeader.tsx b/src/components/orbit/OrbitHeader.tsx
+new file mode 100644
+index 0000000..8f21f3a
+--- /dev/null
++++ b/src/components/orbit/OrbitHeader.tsx
+@@ -0,0 +1,119 @@
++import type { FC } from 'react'
++import type { FilterState } from '../../types/orbit'
++
++interface OrbitHeaderProps {
++  filters: FilterState
++  onFilterChange: (updater: (prev: FilterState) => FilterState) => void
++  onResetView: () => void
++  totalActiveEvents: number
++}
++
++const REGIONS = [
++  'All Regions',
++  'Middle East',
++  'Asia Pacific',
++  'Europe',
++  'North America',
++  'Latin America',
++  'Africa',
++]
++
++const TIME_RANGES: { id: FilterState['selectedTimeRange']; label: string }[] = [
++  { id: 'live', label: 'LIVE' },
++  { id: '24h', label: '24H' },
++  { id: '7d', label: '7D' },
++  { id: '30d', label: '30D' },
++  { id: 'all', label: 'ALL' },
++]
++
++export const OrbitHeader: FC<OrbitHeaderProps> = ({
++  filters,
++  onFilterChange,
++  onResetView,
++  totalActiveEvents,
++}) => {
++  return (
++    <header className="orbit-header">
++      <div className="orbit-brand">
++        <div className="orbit-logo-icon">
++          <div className="orbit-logo-ring" />
++          <div className="orbit-logo-core" />
++        </div>
++        <div className="orbit-title">
++          <span className="orbit-title-main">ORBIT</span>
++          <span className="orbit-title-sub">GLOBAL INTELLIGENCE PLATFORM</span>
++        </div>
++        <div className="orbit-live-badge">
++          <div className="orbit-pulse-dot" />
++          <span>LIVE • {totalActiveEvents} SIGNALS</span>
++        </div>
++      </div>
++
++      <div className="orbit-header-controls">
++        <div className="orbit-search-wrapper">
++          <span className="orbit-search-icon">🔍</span>
++          <input
++            type="text"
++            className="orbit-search-input"
++            placeholder="Search events, signals, coordinates..."
++            value={filters.searchQuery}
++            onChange={(e) =>
++              onFilterChange((prev) => ({ ...prev, searchQuery: e.target.value }))
++            }
++          />
++        </div>
++
++        <select
++          className="orbit-select"
++          value={filters.selectedRegion}
++          onChange={(e) =>
++            onFilterChange((prev) => ({ ...prev, selectedRegion: e.target.value }))
++          }
++        >
++          {REGIONS.map((r) => (
++            <option key={r} value={r === 'All Regions' ? 'all' : r}>
++              {r}
++            </option>
++          ))}
++        </select>
++
++        <div className="orbit-btn-group">
++          {TIME_RANGES.map((t) => (
++            <button
++              key={t.id}
++              className={`orbit-btn-toggle ${filters.selectedTimeRange === t.id ? 'active' : ''}`}
++              onClick={() =>
++                onFilterChange((prev) => ({ ...prev, selectedTimeRange: t.id }))
++              }
++            >
++              {t.label}
++            </button>
++          ))}
++        </div>
++
++        <div className="orbit-btn-group">
++          <button
++            className={`orbit-btn-toggle ${filters.projectionMode === '2d' ? 'active' : ''}`}
++            onClick={() =>
++              onFilterChange((prev) => ({ ...prev, projectionMode: '2d' }))
++            }
++          >
++            2D MAP
++          </button>
++          <button
++            className={`orbit-btn-toggle ${filters.projectionMode === '3d' ? 'active' : ''}`}
++            onClick={() =>
++              onFilterChange((prev) => ({ ...prev, projectionMode: '3d' }))
++            }
++          >
++            3D GLOBE
++          </button>
++        </div>
++
++        <button className="orbit-btn-action" onClick={onResetView} title="Reset Map Camera">
++          <span>🎯</span> Reset
++        </button>
++      </div>
++    </header>
++  )
++}
+diff --git a/src/components/orbit/OrbitMap.tsx b/src/components/orbit/OrbitMap.tsx
+new file mode 100644
+index 0000000..db22ea1
+--- /dev/null
++++ b/src/components/orbit/OrbitMap.tsx
+@@ -0,0 +1,365 @@
++import { useState, useEffect, useRef, type FC, type MouseEvent, type WheelEvent } from 'react'
++import type { OrbitEvent, FilterState } from '../../types/orbit'
++
++interface OrbitMapProps {
++  events: OrbitEvent[]
++  selectedEvent: OrbitEvent | null
++  onSelectEvent: (event: OrbitEvent) => void
++  projectionMode: FilterState['projectionMode']
++  zoomLevel: number
++  onZoomChange: (delta: number) => void
++  onResetCamera: () => void
++}
++
++const SEVERITY_COLORS: Record<string, string> = {
++  critical: '#ef4444',
++  high: '#f97316',
++  elevated: '#f59e0b',
++  normal: '#10b981',
++  info: '#3b82f6',
++}
++
++const DOMAIN_ICONS: Record<string, string> = {
++  geopolitical: '🌐',
++  healthcare: '🩺',
++  environmental: '🌿',
++  disasters: '⚠️',
++  emerging: '📡',
++  cross_domain: '🔀',
++}
++
++export const OrbitMap: FC<OrbitMapProps> = ({
++  events,
++  selectedEvent,
++  onSelectEvent,
++  projectionMode,
++  zoomLevel,
++  onZoomChange,
++  onResetCamera,
++}) => {
++  const containerRef = useRef<HTMLDivElement>(null)
++  const canvasRef = useRef<HTMLCanvasElement>(null)
++
++  // Map state
++  const [centerLon, setCenterLon] = useState(15)
++  const [centerLat, setCenterLat] = useState(20)
++  const [isDragging, setIsDragging] = useState(false)
++  const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
++  const [hoveredEvent, setHoveredEvent] = useState<OrbitEvent | null>(null)
++  const [mouseCoords, setMouseCoords] = useState<{ lat: number; lon: number } | null>(null)
++
++  // Center on selected event if changed
++  useEffect(() => {
++    if (selectedEvent) {
++      setCenterLon(selectedEvent.longitude)
++      setCenterLat(selectedEvent.latitude)
++    }
++  }, [selectedEvent])
++
++  // Mouse handlers for dragging pan / rotation
++  const handleMouseDown = (e: MouseEvent) => {
++    setIsDragging(true)
++    setDragStart({ x: e.clientX, y: e.clientY })
++  }
++
++  const handleMouseMove = (e: MouseEvent) => {
++    if (!containerRef.current) return
++    const rect = containerRef.current.getBoundingClientRect()
++    const x = e.clientX - rect.left
++    const y = e.clientY - rect.top
++
++    // Calculate approximate lat/lon under cursor for HUD
++    if (projectionMode === '2d') {
++      const lon = ((x / rect.width) * 360 - 180) / zoomLevel + centerLon
++      const lat = (90 - (y / rect.height) * 180) / zoomLevel + centerLat
++      setMouseCoords({ lat: Math.max(-90, Math.min(90, lat)), lon: ((lon + 180) % 360) - 180 })
++    }
++
++    if (!isDragging) return
++
++    const dx = e.clientX - dragStart.x
++    const dy = e.clientY - dragStart.y
++    setDragStart({ x: e.clientX, y: e.clientY })
++
++    if (projectionMode === '3d') {
++      // Rotate globe
++      setCenterLon((prev) => ((prev - dx * 0.4 + 180) % 360) - 180)
++      setCenterLat((prev) => Math.max(-85, Math.min(85, prev + dy * 0.4)))
++    } else {
++      // Pan 2D map
++      setCenterLon((prev) => prev - (dx / (rect.width * 0.005)) / zoomLevel)
++      setCenterLat((prev) => Math.max(-85, Math.min(85, prev + (dy / (rect.height * 0.005)) / zoomLevel)))
++    }
++  }
++
++  const handleMouseUp = () => {
++    setIsDragging(false)
++  }
++
++  const handleWheel = (e: WheelEvent) => {
++    e.preventDefault()
++    onZoomChange(e.deltaY < 0 ? 0.2 : -0.2)
++  }
++
++  // Draw tactical Canvas background (graticules, globe sphere, land mass grid)
++  useEffect(() => {
++    const canvas = canvasRef.current
++    if (!canvas || !containerRef.current) return
++    const ctx = canvas.getContext('2d')
++    if (!ctx) return
++
++    const width = containerRef.current.clientWidth
++    const height = containerRef.current.clientHeight
++    canvas.width = width
++    canvas.height = height
++
++    // Clear
++    ctx.clearRect(0, 0, width, height)
++
++    if (projectionMode === '3d') {
++      // Render 3D Orthographic Globe
++      const radius = Math.min(width, height) * 0.38 * zoomLevel
++      const cx = width / 2
++      const cy = height / 2
++
++      // Globe atmospheric outer glow
++      const glowGrad = ctx.createRadialGradient(cx, cy, radius * 0.95, cx, cy, radius * 1.15)
++      glowGrad.addColorStop(0, 'rgba(0, 240, 255, 0.25)')
++      glowGrad.addColorStop(1, 'rgba(0, 240, 255, 0)')
++      ctx.fillStyle = glowGrad
++      ctx.beginPath()
++      ctx.arc(cx, cy, radius * 1.15, 0, Math.PI * 2)
++      ctx.fill()
++
++      // Globe sphere surface fill
++      const sphereGrad = ctx.createRadialGradient(cx - radius * 0.3, cy - radius * 0.3, radius * 0.1, cx, cy, radius)
++      sphereGrad.addColorStop(0, '#101e33')
++      sphereGrad.addColorStop(0.7, '#09111c')
++      sphereGrad.addColorStop(1, '#04070d')
++      ctx.fillStyle = sphereGrad
++      ctx.beginPath()
++      ctx.arc(cx, cy, radius, 0, Math.PI * 2)
++      ctx.fill()
++      ctx.lineWidth = 1.5
++      ctx.strokeStyle = '#00f0ff'
++      ctx.stroke()
++
++      // Render 3D Latitude/Longitude Graticule lines
++      ctx.lineWidth = 0.5
++      ctx.strokeStyle = 'rgba(0, 240, 255, 0.15)'
++
++      // Longitude lines
++      for (let lon = -180; lon < 180; lon += 30) {
++        ctx.beginPath()
++        let started = false
++        for (let lat = -90; lat <= 90; lat += 5) {
++          const pt = project3D(lat, lon, centerLat, centerLon, radius, cx, cy)
++          if (pt.visible) {
++            if (!started) { ctx.moveTo(pt.x, pt.y); started = true }
++            else { ctx.lineTo(pt.x, pt.y) }
++          } else {
++            started = false
++          }
++        }
++        ctx.stroke()
++      }
++
++      // Latitude circles
++      for (let lat = -60; lat <= 60; lat += 30) {
++        ctx.beginPath()
++        let started = false
++        for (let lon = -180; lon <= 180; lon += 5) {
++          const pt = project3D(lat, lon, centerLat, centerLon, radius, cx, cy)
++          if (pt.visible) {
++            if (!started) { ctx.moveTo(pt.x, pt.y); started = true }
++            else { ctx.lineTo(pt.x, pt.y) }
++          } else {
++            started = false
++          }
++        }
++        ctx.stroke()
++      }
++
++    } else {
++      // Render 2D Grid & Map lines
++      ctx.strokeStyle = 'rgba(31, 41, 61, 0.6)'
++      ctx.lineWidth = 0.5
++
++      const step = 40 * zoomLevel
++      for (let x = 0; x < width; x += step) {
++        ctx.beginPath()
++        ctx.moveTo(x, 0)
++        ctx.lineTo(x, height)
++        ctx.stroke()
++      }
++      for (let y = 0; y < height; y += step) {
++        ctx.beginPath()
++        ctx.moveTo(0, y)
++        ctx.lineTo(width, y)
++        ctx.stroke()
++      }
++
++      // Draw Equator & Prime Meridian accents
++      const eqY = height / 2 + (centerLat * height) / 180
++      const pmX = width / 2 - (centerLon * width) / 360
++
++      ctx.strokeStyle = 'rgba(0, 240, 255, 0.25)'
++      ctx.lineWidth = 1
++      ctx.beginPath()
++      ctx.moveTo(0, eqY)
++      ctx.lineTo(width, eqY)
++      ctx.stroke()
++
++      ctx.beginPath()
++      ctx.moveTo(pmX, 0)
++      ctx.lineTo(pmX, height)
++      ctx.stroke()
++    }
++  }, [projectionMode, centerLon, centerLat, zoomLevel])
++
++  // Helper projection math for 3D Globe
++  function project3D(
++    lat: number,
++    lon: number,
++    cLat: number,
++    cLon: number,
++    radius: number,
++    cx: number,
++    cy: number
++  ) {
++    const radLat = (lat * Math.PI) / 180
++    const radLon = (lon * Math.PI) / 180
++    const radCLat = (cLat * Math.PI) / 180
++    const radCLon = (cLon * Math.PI) / 180
++
++    const cosc = Math.sin(radCLat) * Math.sin(radLat) + Math.cos(radCLat) * Math.cos(radLat) * Math.cos(radLon - radCLon)
++    const visible = cosc > 0
++
++    const x = cx + radius * Math.cos(radLat) * Math.sin(radLon - radCLon)
++    const y = cy - radius * (Math.cos(radCLat) * Math.sin(radLat) - Math.sin(radCLat) * Math.cos(radLat) * Math.cos(radLon - radCLon))
++
++    return { x, y, visible }
++  }
++
++  // Calculate marker screen positions
++  const getMarkerPos = (lat: number, lon: number) => {
++    if (!containerRef.current) return { x: -999, y: -999, visible: false }
++    const width = containerRef.current.clientWidth
++    const height = containerRef.current.clientHeight
++
++    if (projectionMode === '3d') {
++      const radius = Math.min(width, height) * 0.38 * zoomLevel
++      const cx = width / 2
++      const cy = height / 2
++      return project3D(lat, lon, centerLat, centerLon, radius, cx, cy)
++    } else {
++      // 2D Projection
++      const x = ((lon - centerLon + 180) / 360) * width * zoomLevel + (width * (1 - zoomLevel)) / 2
++      const y = ((90 - lat - centerLat) / 180) * height * zoomLevel + (height * (1 - zoomLevel)) / 2
++      const visible = x >= 0 && x <= width && y >= 0 && y <= height
++      return { x, y, visible }
++    }
++  }
++
++  return (
++    <div
++      ref={containerRef}
++      className="orbit-map-viewport"
++      onMouseDown={handleMouseDown}
++      onMouseMove={handleMouseMove}
++      onMouseUp={handleMouseUp}
++      onMouseLeave={handleMouseUp}
++      onWheel={handleWheel}
++    >
++      <canvas ref={canvasRef} className="orbit-map-canvas-container" />
++
++      {/* Map HUD Overlays */}
++      <div className="orbit-map-hud">
++        <div className="orbit-hud-card">
++          <span className="orbit-hud-label">PROJECTION ENGINE</span>
++          <span className="orbit-hud-val">
++            {projectionMode === '3d' ? '3D ORTHOGRAPHIC GLOBE' : '2D EQUIRECTANGULAR'}
++          </span>
++        </div>
++        <div className="orbit-hud-card">
++          <span className="orbit-hud-label">CENTER LAT / LON</span>
++          <span className="orbit-hud-val" style={{ fontSize: '11px' }}>
++            {centerLat.toFixed(2)}° N, {centerLon.toFixed(2)}° E
++          </span>
++        </div>
++        {mouseCoords && (
++          <div className="orbit-hud-card">
++            <span className="orbit-hud-label">CURSOR TARGET</span>
++            <span className="orbit-hud-val" style={{ fontSize: '11px', color: '#94a3b8' }}>
++              {mouseCoords.lat.toFixed(2)}°, {mouseCoords.lon.toFixed(2)}°
++            </span>
++          </div>
++        )}
++      </div>
++
++      {/* Map Controls */}
++      <div className="orbit-map-controls">
++        <button className="orbit-map-btn" onClick={() => onZoomChange(0.25)} title="Zoom In">
++          +
++        </button>
++        <button className="orbit-map-btn" onClick={() => onZoomChange(-0.25)} title="Zoom Out">
++          −
++        </button>
++        <button className="orbit-map-btn" onClick={onResetCamera} title="Reset Camera">
++          ⌖
++        </button>
++      </div>
++
++      {/* Render Event Markers */}
++      {events.map((evt) => {
++        const { x, y, visible } = getMarkerPos(evt.latitude, evt.longitude)
++        if (!visible) return null
++
++        const isSelected = selectedEvent?.id === evt.id
++        const color = SEVERITY_COLORS[evt.severity] || '#00f0ff'
++
++        return (
++          <div
++            key={evt.id}
++            className="orbit-map-marker"
++            style={{
++              left: `${x}px`,
++              top: `${y}px`,
++              color: color,
++            }}
++            onClick={(e) => {
++              e.stopPropagation()
++              onSelectEvent(evt)
++            }}
++            onMouseEnter={() => setHoveredEvent(evt)}
++            onMouseLeave={() => setHoveredEvent(null)}
++          >
++            <div
++              className="orbit-marker-ring"
++              style={{
++                borderColor: color,
++                backgroundColor: isSelected ? 'rgba(0,240,255,0.3)' : 'rgba(0,0,0,0.6)',
++                width: isSelected ? '22px' : '16px',
++                height: isSelected ? '22px' : '16px',
++              }}
++            >
++              <span style={{ fontSize: isSelected ? '11px' : '8px' }}>
++                {DOMAIN_ICONS[evt.domain] || '📍'}
++              </span>
++            </div>
++
++            {/* Hover Tooltip */}
++            {(hoveredEvent?.id === evt.id || isSelected) && (
++              <div className="orbit-tooltip">
++                <div style={{ fontWeight: 700, color: '#fff' }}>{evt.title}</div>
++                <div style={{ color: color, fontSize: '9px', marginTop: '2px' }}>
++                  {evt.domain.toUpperCase()} • {evt.severity.toUpperCase()} • {evt.region}
++                </div>
++              </div>
++            )}
++          </div>
++        )
++      })}
++    </div>
++  )
++}
+diff --git a/src/components/orbit/StatusBar.tsx b/src/components/orbit/StatusBar.tsx
+new file mode 100644
+index 0000000..c80da24
+--- /dev/null
++++ b/src/components/orbit/StatusBar.tsx
+@@ -0,0 +1,42 @@
++import type { FC } from 'react'
++
++interface StatusBarProps {
++  activeCount: number
++  totalCount: number
++}
++
++const SEVERITIES = [
++  { label: 'CRITICAL', color: '#ef4444' },
++  { label: 'HIGH', color: '#f97316' },
++  { label: 'ELEVATED', color: '#f59e0b' },
++  { label: 'NORMAL', color: '#10b981' },
++  { label: 'INFO', color: '#3b82f6' },
++]
++
++export const StatusBar: FC<StatusBarProps> = ({ activeCount, totalCount }) => {
++  return (
++    <footer className="orbit-statusbar">
++      <div className="orbit-legend">
++        <span style={{ fontWeight: 700, color: '#94a3b8' }}>SEVERITY:</span>
++        {SEVERITIES.map((s) => (
++          <div key={s.label} className="orbit-legend-item">
++            <div className="orbit-legend-dot" style={{ backgroundColor: s.color }} />
++            <span>{s.label}</span>
++          </div>
++        ))}
++      </div>
++
++      <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
++        <span>
++          SIGNALS FILTERED: <strong style={{ color: '#00f0ff' }}>{activeCount}</strong> / {totalCount}
++        </span>
++        <span>
++          INGESTION RATE: <strong style={{ color: '#10b981' }}>1.4k / sec</strong>
++        </span>
++        <span>
++          STATUS: <strong style={{ color: '#10b981' }}>● OPERATIONAL</strong>
++        </span>
++      </div>
++    </footer>
++  )
++}
+diff --git a/src/components/orbit/orbit.css b/src/components/orbit/orbit.css
+new file mode 100644
+index 0000000..62c11c5
+--- /dev/null
++++ b/src/components/orbit/orbit.css
+@@ -0,0 +1,786 @@
++/* ORBIT Global Intelligence Console — Tactical Dark Theme Styling */
++:root {
++  --orbit-bg: #07090e;
++  --orbit-bg-secondary: #0d1117;
++  --orbit-surface: #121824;
++  --orbit-surface-hover: #1b2436;
++  --orbit-surface-active: #222f46;
++  --orbit-border: #1f293d;
++  --orbit-border-bright: #2f3e5c;
++  --orbit-border-accent: #00f0ff;
++
++  --orbit-text: #e2e8f0;
++  --orbit-text-muted: #94a3b8;
++  --orbit-text-dim: #64748b;
++  --orbit-text-glow: #e0f2fe;
++
++  --orbit-accent-cyan: #00f0ff;
++  --orbit-accent-blue: #3b82f6;
++  --orbit-accent-green: #10b981;
++  --orbit-accent-amber: #f59e0b;
++  --orbit-accent-red: #ef4444;
++
++  /* Severity scale */
++  --severity-critical: #ef4444;
++  --severity-high: #f97316;
++  --severity-elevated: #f59e0b;
++  --severity-normal: #10b981;
++  --severity-info: #3b82f6;
++
++  /* Domain scale */
++  --domain-geopolitical: #f43f5e;
++  --domain-healthcare: #10b981;
++  --domain-environmental: #06b6d4;
++  --domain-disasters: #f59e0b;
++  --domain-emerging: #a855f7;
++  --domain-crossdomain: #ec4899;
++
++  --orbit-font: 'SF Mono', 'Monaco', 'Cascadia Code', 'Fira Code', 'Roboto Mono', monospace;
++}
++
++.orbit-container {
++  display: flex;
++  flex-direction: column;
++  height: 100vh;
++  width: 100vw;
++  background-color: var(--orbit-bg);
++  color: var(--orbit-text);
++  font-family: var(--orbit-font);
++  overflow: hidden;
++  user-select: none;
++}
++
++/* Header */
++.orbit-header {
++  height: 52px;
++  background: linear-gradient(180deg, #0e1626 0%, #090d16 100%);
++  border-bottom: 1px solid var(--orbit-border);
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  padding: 0 16px;
++  gap: 16px;
++  z-index: 50;
++}
++
++.orbit-brand {
++  display: flex;
++  align-items: center;
++  gap: 12px;
++}
++
++.orbit-logo-icon {
++  width: 28px;
++  height: 28px;
++  position: relative;
++  display: flex;
++  align-items: center;
++  justify-content: center;
++}
++
++.orbit-logo-ring {
++  position: absolute;
++  width: 100%;
++  height: 100%;
++  border: 2px solid var(--orbit-accent-cyan);
++  border-radius: 50%;
++  box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
++  animation: orbitSpin 12s linear infinite;
++}
++
++.orbit-logo-core {
++  width: 8px;
++  height: 8px;
++  background-color: #fff;
++  border-radius: 50%;
++  box-shadow: 0 0 8px #fff;
++}
++
++@keyframes orbitSpin {
++  from { transform: rotate(0deg); }
++  to { transform: rotate(360deg); }
++}
++
++.orbit-title {
++  display: flex;
++  flex-direction: column;
++}
++
++.orbit-title-main {
++  font-size: 16px;
++  font-weight: 800;
++  letter-spacing: 2px;
++  color: #fff;
++  line-height: 1;
++  text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
++}
++
++.orbit-title-sub {
++  font-size: 9px;
++  letter-spacing: 1px;
++  color: var(--orbit-text-dim);
++  margin-top: 2px;
++}
++
++.orbit-live-badge {
++  display: flex;
++  align-items: center;
++  gap: 6px;
++  background: rgba(16, 185, 129, 0.1);
++  border: 1px solid rgba(16, 185, 129, 0.3);
++  padding: 3px 8px;
++  border-radius: 4px;
++  font-size: 11px;
++  color: var(--orbit-accent-green);
++  font-weight: 600;
++}
++
++.orbit-pulse-dot {
++  width: 6px;
++  height: 6px;
++  background-color: var(--orbit-accent-green);
++  border-radius: 50%;
++  box-shadow: 0 0 8px var(--orbit-accent-green);
++  animation: pulseGlow 1.8s ease-in-out infinite;
++}
++
++@keyframes pulseGlow {
++  0%, 100% { opacity: 0.3; transform: scale(0.8); }
++  50% { opacity: 1; transform: scale(1.2); }
++}
++
++.orbit-header-controls {
++  display: flex;
++  align-items: center;
++  gap: 12px;
++  flex: 1;
++  justify-content: flex-end;
++}
++
++.orbit-search-wrapper {
++  position: relative;
++  width: 240px;
++}
++
++.orbit-search-input {
++  width: 100%;
++  background-color: var(--orbit-surface);
++  border: 1px solid var(--orbit-border);
++  color: var(--orbit-text);
++  padding: 6px 12px 6px 30px;
++  border-radius: 4px;
++  font-family: inherit;
++  font-size: 12px;
++  outline: none;
++  transition: all 0.2s;
++}
++
++.orbit-search-input:focus {
++  border-color: var(--orbit-accent-cyan);
++  box-shadow: 0 0 8px rgba(0, 240, 255, 0.2);
++}
++
++.orbit-search-icon {
++  position: absolute;
++  left: 10px;
++  top: 50%;
++  transform: translateY(-50%);
++  color: var(--orbit-text-dim);
++  font-size: 12px;
++  pointer-events: none;
++}
++
++.orbit-select {
++  background-color: var(--orbit-surface);
++  border: 1px solid var(--orbit-border);
++  color: var(--orbit-text);
++  padding: 5px 10px;
++  border-radius: 4px;
++  font-family: inherit;
++  font-size: 12px;
++  outline: none;
++  cursor: pointer;
++}
++
++.orbit-select:hover {
++  border-color: var(--orbit-border-bright);
++}
++
++.orbit-btn-group {
++  display: flex;
++  background-color: var(--orbit-surface);
++  border: 1px solid var(--orbit-border);
++  border-radius: 4px;
++  padding: 2px;
++}
++
++.orbit-btn-toggle {
++  background: transparent;
++  border: none;
++  color: var(--orbit-text-muted);
++  padding: 4px 10px;
++  font-size: 11px;
++  font-weight: 600;
++  font-family: inherit;
++  cursor: pointer;
++  border-radius: 3px;
++  transition: all 0.15s;
++}
++
++.orbit-btn-toggle.active {
++  background-color: var(--orbit-surface-active);
++  color: var(--orbit-accent-cyan);
++  border: 1px solid var(--orbit-border-bright);
++  box-shadow: inset 0 0 6px rgba(0, 240, 255, 0.15);
++}
++
++.orbit-btn-action {
++  background-color: var(--orbit-surface);
++  border: 1px solid var(--orbit-border);
++  color: var(--orbit-text);
++  padding: 5px 12px;
++  border-radius: 4px;
++  font-family: inherit;
++  font-size: 12px;
++  cursor: pointer;
++  display: flex;
++  align-items: center;
++  gap: 6px;
++  transition: all 0.2s;
++}
++
++.orbit-btn-action:hover {
++  background-color: var(--orbit-surface-hover);
++  border-color: var(--orbit-accent-cyan);
++}
++
++/* Workspace Layout */
++.orbit-workspace {
++  display: flex;
++  flex: 1;
++  position: relative;
++  overflow: hidden;
++}
++
++/* Left Sidebar */
++.orbit-sidebar-left {
++  width: 280px;
++  background-color: var(--orbit-surface);
++  border-right: 1px solid var(--orbit-border);
++  display: flex;
++  flex-direction: column;
++  z-index: 20;
++  transition: width 0.2s ease;
++}
++
++.orbit-sidebar-left.collapsed {
++  width: 48px;
++}
++
++.orbit-panel-header {
++  padding: 12px 14px;
++  border-bottom: 1px solid var(--orbit-border);
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  background-color: rgba(0, 0, 0, 0.2);
++}
++
++.orbit-panel-title {
++  font-size: 12px;
++  font-weight: 700;
++  letter-spacing: 1.5px;
++  color: var(--orbit-accent-cyan);
++  text-transform: uppercase;
++  display: flex;
++  align-items: center;
++  gap: 8px;
++}
++
++.orbit-layer-list {
++  padding: 12px;
++  display: flex;
++  flex-direction: column;
++  gap: 8px;
++  overflow-y: auto;
++  flex: 1;
++}
++
++.orbit-layer-card {
++  background: var(--orbit-bg-secondary);
++  border: 1px solid var(--orbit-border);
++  border-radius: 6px;
++  padding: 10px 12px;
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  cursor: pointer;
++  transition: all 0.15s ease;
++}
++
++.orbit-layer-card:hover {
++  border-color: var(--orbit-border-bright);
++  background-color: var(--orbit-surface-hover);
++}
++
++.orbit-layer-card.active {
++  border-color: var(--orbit-layer-color, var(--orbit-accent-cyan));
++  background: linear-gradient(90deg, rgba(0, 240, 255, 0.05) 0%, transparent 100%);
++}
++
++.orbit-layer-info {
++  display: flex;
++  align-items: center;
++  gap: 10px;
++}
++
++.orbit-layer-icon {
++  font-size: 16px;
++}
++
++.orbit-layer-name {
++  font-size: 12px;
++  font-weight: 600;
++  color: var(--orbit-text);
++}
++
++.orbit-layer-badge {
++  background-color: rgba(255, 255, 255, 0.08);
++  border: 1px solid var(--orbit-border);
++  padding: 2px 7px;
++  border-radius: 10px;
++  font-size: 10px;
++  color: var(--orbit-text-muted);
++}
++
++.orbit-toggle-checkbox {
++  width: 14px;
++  height: 14px;
++  accent-color: var(--orbit-accent-cyan);
++  cursor: pointer;
++}
++
++.orbit-severity-filter {
++  padding: 12px;
++  border-top: 1px solid var(--orbit-border);
++  background-color: rgba(0, 0, 0, 0.2);
++}
++
++.orbit-section-label {
++  font-size: 10px;
++  letter-spacing: 1px;
++  color: var(--orbit-text-dim);
++  text-transform: uppercase;
++  margin-bottom: 8px;
++  display: block;
++}
++
++.orbit-severity-buttons {
++  display: grid;
++  grid-template-columns: repeat(2, 1fr);
++  gap: 6px;
++}
++
++.orbit-sev-btn {
++  background: var(--orbit-bg-secondary);
++  border: 1px solid var(--orbit-border);
++  color: var(--orbit-text-muted);
++  padding: 5px;
++  font-size: 10px;
++  font-weight: 600;
++  border-radius: 4px;
++  cursor: pointer;
++  text-align: center;
++}
++
++.orbit-sev-btn.active {
++  border-color: var(--sev-color, var(--orbit-accent-cyan));
++  color: #fff;
++  background-color: rgba(255, 255, 255, 0.05);
++  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
++}
++
++/* Center Map Area */
++.orbit-map-viewport {
++  flex: 1;
++  position: relative;
++  background: radial-gradient(circle at center, #0e1726 0%, #05080e 100%);
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  overflow: hidden;
++}
++
++.orbit-map-canvas-container {
++  width: 100%;
++  height: 100%;
++  position: absolute;
++  top: 0;
++  left: 0;
++}
++
++.orbit-map-hud {
++  position: absolute;
++  top: 16px;
++  left: 16px;
++  display: flex;
++  flex-direction: column;
++  gap: 8px;
++  z-index: 10;
++}
++
++.orbit-hud-card {
++  background: rgba(13, 17, 23, 0.85);
++  backdrop-filter: blur(8px);
++  border: 1px solid var(--orbit-border);
++  padding: 8px 12px;
++  border-radius: 6px;
++  font-size: 11px;
++  display: flex;
++  flex-direction: column;
++  gap: 2px;
++  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
++}
++
++.orbit-hud-label {
++  font-size: 9px;
++  letter-spacing: 1px;
++  color: var(--orbit-text-dim);
++  text-transform: uppercase;
++}
++
++.orbit-hud-val {
++  font-size: 14px;
++  font-weight: 700;
++  color: var(--orbit-accent-cyan);
++}
++
++.orbit-map-controls {
++  position: absolute;
++  bottom: 24px;
++  left: 16px;
++  display: flex;
++  flex-direction: column;
++  gap: 6px;
++  z-index: 10;
++}
++
++.orbit-map-btn {
++  width: 34px;
++  height: 34px;
++  background: rgba(13, 17, 23, 0.9);
++  backdrop-filter: blur(8px);
++  border: 1px solid var(--orbit-border);
++  color: var(--orbit-text);
++  border-radius: 6px;
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  font-size: 16px;
++  cursor: pointer;
++  transition: all 0.15s;
++}
++
++.orbit-map-btn:hover {
++  border-color: var(--orbit-accent-cyan);
++  color: var(--orbit-accent-cyan);
++}
++
++/* Right Intelligence Panel */
++.orbit-sidebar-right {
++  width: 380px;
++  background-color: var(--orbit-surface);
++  border-left: 1px solid var(--orbit-border);
++  display: flex;
++  flex-direction: column;
++  z-index: 20;
++}
++
++.orbit-tabs {
++  display: flex;
++  border-bottom: 1px solid var(--orbit-border);
++  background-color: rgba(0, 0, 0, 0.2);
++}
++
++.orbit-tab {
++  flex: 1;
++  padding: 10px 4px;
++  font-size: 11px;
++  font-weight: 600;
++  text-align: center;
++  color: var(--orbit-text-dim);
++  background: transparent;
++  border: none;
++  border-bottom: 2px solid transparent;
++  cursor: pointer;
++  transition: all 0.15s;
++}
++
++.orbit-tab.active {
++  color: var(--orbit-accent-cyan);
++  border-bottom-color: var(--orbit-accent-cyan);
++  background-color: rgba(0, 240, 255, 0.03);
++}
++
++.orbit-tab-content {
++  flex: 1;
++  overflow-y: auto;
++  padding: 14px;
++  display: flex;
++  flex-direction: column;
++  gap: 12px;
++}
++
++/* Event List Card */
++.orbit-event-card {
++  background-color: var(--orbit-bg-secondary);
++  border: 1px solid var(--orbit-border);
++  border-radius: 6px;
++  padding: 10px 12px;
++  cursor: pointer;
++  transition: all 0.15s;
++  display: flex;
++  flex-direction: column;
++  gap: 6px;
++}
++
++.orbit-event-card:hover {
++  border-color: var(--orbit-border-bright);
++  transform: translateY(-1px);
++}
++
++.orbit-event-card.selected {
++  border-color: var(--orbit-accent-cyan);
++  box-shadow: 0 0 10px rgba(0, 240, 255, 0.15);
++  background-color: var(--orbit-surface-hover);
++}
++
++.orbit-card-top {
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  gap: 8px;
++}
++
++.orbit-sev-badge {
++  padding: 2px 6px;
++  border-radius: 3px;
++  font-size: 9px;
++  font-weight: 800;
++  letter-spacing: 0.5px;
++  text-transform: uppercase;
++  color: #fff;
++}
++
++.orbit-time-ago {
++  font-size: 10px;
++  color: var(--orbit-text-dim);
++}
++
++.orbit-event-title {
++  font-size: 12px;
++  font-weight: 700;
++  color: var(--orbit-text);
++  line-height: 1.3;
++}
++
++.orbit-event-meta {
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  font-size: 10px;
++  color: var(--orbit-text-muted);
++}
++
++/* Selected Event Detailed View */
++.orbit-detail-header {
++  border-bottom: 1px solid var(--orbit-border);
++  padding-bottom: 10px;
++  margin-bottom: 8px;
++}
++
++.orbit-detail-title {
++  font-size: 15px;
++  font-weight: 800;
++  color: #fff;
++  line-height: 1.3;
++  margin-top: 6px;
++}
++
++.orbit-ai-block {
++  background: linear-gradient(135deg, rgba(0, 240, 255, 0.04) 0%, rgba(59, 130, 246, 0.04) 100%);
++  border: 1px solid rgba(0, 240, 255, 0.2);
++  border-radius: 6px;
++  padding: 10px 12px;
++  font-size: 11px;
++  line-height: 1.5;
++}
++
++.orbit-ai-label {
++  font-size: 10px;
++  font-weight: 700;
++  letter-spacing: 1px;
++  color: var(--orbit-accent-cyan);
++  text-transform: uppercase;
++  margin-bottom: 4px;
++  display: flex;
++  align-items: center;
++  gap: 6px;
++}
++
++.orbit-actors-tag {
++  display: inline-block;
++  background: var(--orbit-surface);
++  border: 1px solid var(--orbit-border);
++  padding: 2px 6px;
++  border-radius: 4px;
++  font-size: 10px;
++  margin-right: 4px;
++  margin-top: 4px;
++  color: var(--orbit-text);
++}
++
++.orbit-sources-list {
++  display: flex;
++  flex-direction: column;
++  gap: 6px;
++}
++
++.orbit-source-item {
++  background: var(--orbit-bg-secondary);
++  border: 1px solid var(--orbit-border);
++  padding: 8px 10px;
++  border-radius: 4px;
++  font-size: 10px;
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++}
++
++.orbit-source-link {
++  color: var(--orbit-accent-cyan);
++  text-decoration: none;
++  font-weight: 600;
++}
++
++.orbit-source-link:hover {
++  text-decoration: underline;
++}
++
++/* Regional Snapshot */
++.orbit-regional-card {
++  background: var(--orbit-bg-secondary);
++  border: 1px solid var(--orbit-border);
++  border-radius: 6px;
++  padding: 12px;
++  display: flex;
++  flex-direction: column;
++  gap: 10px;
++}
++
++.orbit-risk-meter {
++  display: flex;
++  flex-direction: column;
++  gap: 4px;
++}
++
++.orbit-meter-bar-bg {
++  height: 6px;
++  background-color: var(--orbit-surface);
++  border-radius: 3px;
++  overflow: hidden;
++}
++
++.orbit-meter-bar-fill {
++  height: 100%;
++  border-radius: 3px;
++  transition: width 0.4s ease;
++}
++
++/* Bottom Status Bar */
++.orbit-statusbar {
++  height: 28px;
++  background-color: #06080d;
++  border-top: 1px solid var(--orbit-border);
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  padding: 0 14px;
++  font-size: 10px;
++  color: var(--orbit-text-dim);
++  z-index: 50;
++}
++
++.orbit-legend {
++  display: flex;
++  align-items: center;
++  gap: 12px;
++}
++
++.orbit-legend-item {
++  display: flex;
++  align-items: center;
++  gap: 4px;
++}
++
++.orbit-legend-dot {
++  width: 7px;
++  height: 7px;
++  border-radius: 50%;
++}
++
++/* Map Markers */
++.orbit-map-marker {
++  position: absolute;
++  transform: translate(-50%, -50%);
++  cursor: pointer;
++  z-index: 15;
++  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
++}
++
++.orbit-map-marker:hover {
++  transform: translate(-50%, -50%) scale(1.3);
++  z-index: 30;
++}
++
++.orbit-marker-ring {
++  width: 16px;
++  height: 16px;
++  border-radius: 50%;
++  border: 2px solid currentColor;
++  box-shadow: 0 0 10px currentColor;
++  position: relative;
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  animation: markerPulse 2s infinite;
++}
++
++@keyframes markerPulse {
++  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
++  70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
++  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
++}
++
++.orbit-marker-core {
++  width: 6px;
++  height: 6px;
++  background-color: #fff;
++  border-radius: 50%;
++}
++
++.orbit-tooltip {
++  position: absolute;
++  bottom: 120%;
++  left: 50%;
++  transform: translateX(-50%);
++  background: rgba(13, 17, 23, 0.95);
++  border: 1px solid var(--orbit-border-bright);
++  padding: 6px 10px;
++  border-radius: 4px;
++  white-space: nowrap;
++  font-size: 10px;
++  pointer-events: none;
++  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
++  z-index: 40;
++}
+diff --git a/src/mock/orbitData.ts b/src/mock/orbitData.ts
+new file mode 100644
+index 0000000..6ea93ae
+--- /dev/null
++++ b/src/mock/orbitData.ts
+@@ -0,0 +1,493 @@
++import type { OrbitEvent, RegionalSnapshot } from '../types/orbit'
++
++export const MOCK_EVENTS: OrbitEvent[] = [
++  {
++    id: 'evt-geo-001',
++    title: 'Strait of Hormuz Maritime Escort Protocols Initiated',
++    description: 'Naval posture elevated following automated AIS spoofing detection and drone surveillance surges along key oil transit routes.',
++    latitude: 26.56,
++    longitude: 56.25,
++    timestamp: '2026-09-19T14:32:00Z',
++    domain: 'geopolitical',
++    eventType: 'Naval Activity & Maritime Chokepoint Risk',
++    severity: 'critical',
++    trend: 'escalating',
++    region: 'Middle East',
++    country: 'Iran / Oman',
++    affectedPopulation: '18.5M coastal population & global energy transport',
++    aiAnalysis: {
++      summary: 'Automated satellite telemetry detected a 340% spike in naval radar activity near Bandar Abbas. Multiple commercial tankers report GPS signal degradation.',
++      riskAssessment: 'High probability of localized supply chain bottleneck; insurance premiums for energy carriers rising 18% DoD.',
++      keyActors: ['IRGC Navy', 'US 5th Fleet Task Force', 'International Maritime Security Construct'],
++      immediateOutlook: 'Heightened alert status expected to persist for 72 hours pending diplomatic communications.',
++    },
++    sources: [
++      {
++        title: 'Maritime Security Center Incident Report #8841',
++        url: 'https://marsec.example.org/report/8841',
++        publisher: 'UKMTO / IMSC',
++        timestamp: '2026-09-19T14:40:00Z',
++        credibilityScore: 96,
++        type: 'official_report',
++      },
++      {
++        title: 'Synthetic Aperture Radar Fleet Mapping',
++        url: 'https://sat-intel.example.org/sar/hormuz-0919',
++        publisher: 'Orbit-SatConstellation-4',
++        timestamp: '2026-09-19T14:15:00Z',
++        credibilityScore: 98,
++        type: 'satellite',
++      },
++    ],
++    relatedEvents: [
++      { id: 'evt-cross-001', title: 'Global Crude Oil Price Volatility Spike', domain: 'cross_domain', severity: 'high' },
++    ],
++  },
++  {
++    id: 'evt-health-001',
++    title: 'Novel Zoonotic Respiratory Virus Cluster Detected',
++    description: 'Surveillance systems flagged abnormal cluster of severe atypical pneumonia presenting resistance to standard antiviral treatments.',
++    latitude: 13.75,
++    longitude: 100.51,
++    timestamp: '2026-09-19T11:15:00Z',
++    domain: 'healthcare',
++    eventType: 'Pathogen Outbreak Alert',
++    severity: 'critical',
++    trend: 'escalating',
++    region: 'Asia Pacific',
++    country: 'Thailand',
++    affectedPopulation: '2.4M urban catchment area',
++    aiAnalysis: {
++      summary: 'Genomic sequencing reveals a recombinant lineage of Betacoronavirus with modified spike glycoprotein binding affinity.',
++      riskAssessment: 'R0 estimated between 2.1 and 2.8. Rapid contact tracing underway in regional transport hubs.',
++      keyActors: ['Ministry of Public Health Thailand', 'WHO Regional Office', 'CDC Global Disease Detection Center'],
++      immediateOutlook: 'Awaiting isolation protocol confirmation from reference laboratories.',
++    },
++    sources: [
++      {
++        title: 'Pathogen Early Warning Bulletin # Thai-2026-09',
++        url: 'https://health-monitor.example.org/bulletin/2026-09',
++        publisher: 'Global Bio-Surveillance Network',
++        timestamp: '2026-09-19T11:45:00Z',
++        credibilityScore: 94,
++        type: 'official_report',
++      },
++      {
++        title: 'Hospital ICU Capacity Telemetry',
++        url: 'https://health-data.example.org/icu/bkk',
++        publisher: 'Regional Hospital Network',
++        timestamp: '2026-09-19T11:00:00Z',
++        credibilityScore: 91,
++        type: 'sensor',
++      },
++    ],
++    relatedEvents: [
++      { id: 'evt-cross-002', title: 'Regional Air Transit Restriction Advisories', domain: 'cross_domain', severity: 'elevated' },
++    ],
++  },
++  {
++    id: 'evt-env-001',
++    title: 'Catastrophic Atmospheric River Landfall & Infrastructure Stress',
++    description: 'Record moisture plume triggering widespread flash flooding, grid failures, and landslide warnings across coastal corridors.',
++    latitude: 47.60,
++    longitude: -122.33,
++    timestamp: '2026-09-19T08:20:00Z',
++    domain: 'environmental',
++    eventType: 'Extreme Meteorological Anomalies',
++    severity: 'high',
++    trend: 'stable',
++    region: 'North America',
++    country: 'United States',
++    affectedPopulation: '4.2M coastal & low-elevation residents',
++    aiAnalysis: {
++      summary: 'Precipitation accumulation exceeded 14 inches in 18 hours. Major hydro-electric dam reservoirs reaching 96% capacity.',
++      riskAssessment: 'High threat to regional power sub-stations; transportation corridors suspended.',
++      keyActors: ['National Weather Service', 'State Emergency Management', 'FEMA Region 10'],
++      immediateOutlook: 'Storm front moving inland; flood cresting expected within 12 hours.',
++    },
++    sources: [
++      {
++        title: 'NOAA Doppler Satellite & Precipitation Analysis',
++        url: 'https://weather-sat.example.org/noaa-ar-2026',
++        publisher: 'NOAA Satellite Division',
++        timestamp: '2026-09-19T08:30:00Z',
++        credibilityScore: 99,
++        type: 'satellite',
++      },
++    ],
++    relatedEvents: [
++      { id: 'evt-dis-001', title: 'Cascade Highway Landslide & Power Grid Cutoff', domain: 'disasters', severity: 'high' },
++    ],
++  },
++  {
++    id: 'evt-dis-001',
++    title: 'Magnitude 6.8 Subduction Zone Earth Tremor',
++    description: 'Offshore earthquake recorded at 14km depth with regional shaking felt across coastal metropolitan centers.',
++    latitude: -33.44,
++    longitude: -70.66,
++    timestamp: '2026-09-19T06:05:00Z',
++    domain: 'disasters',
++    eventType: 'Seismic & Tsunami Hazard',
++    severity: 'high',
++    trend: 'deescalating',
++    region: 'Latin America',
++    country: 'Chile',
++    affectedPopulation: '6.8M coastal population',
++    aiAnalysis: {
++      summary: 'Tsunami warning system evaluated wave heights under 0.6m; initial building damage reported in structural masonry buildings.',
++      riskAssessment: 'Aftershock probability 78% over next 48h; mining operations temporarily paused for safety inspections.',
++      keyActors: ['National Disaster Response Agency (SENAPRED)', 'USGS Earthquake Science Center'],
++      immediateOutlook: 'Tsunami threat cleared; focus shifting to localized structural integrity audits.',
++    },
++    sources: [
++      {
++        title: 'USGS Event Page - M 6.8 Central Chile',
++        url: 'https://earthquake.example.gov/event/chile2026',
++        publisher: 'USGS Seismology Division',
++        timestamp: '2026-09-19T06:15:00Z',
++        credibilityScore: 99,
++        type: 'sensor',
++      },
++    ],
++    relatedEvents: [],
++  },
++  {
++    id: 'evt-cross-001',
++    title: 'Drought-Induced Hydroelectric Deficit Triggers Industrial Shutdowns',
++    description: 'Record low basin water levels force sudden curtailment of heavy manufacturing and energy-intensive processing facilities.',
++    latitude: -15.78,
++    longitude: -47.92,
++    timestamp: '2026-09-19T09:40:00Z',
++    domain: 'cross_domain',
++    eventType: 'Climate-Economic Cascade Signal',
++    severity: 'high',
++    trend: 'escalating',
++    region: 'Latin America',
++    country: 'Brazil',
++    affectedPopulation: '32M industrial grid consumers',
++    aiAnalysis: {
++      summary: 'Multi-year rainfall deficit reduced reservoir volume to 19% of historical mean. Emergency rationing declared for industrial consumers.',
++      riskAssessment: 'Agricultural export processing and mineral refining operating at 40% capacity.',
++      keyActors: ['Ministry of Mines and Energy', 'National Water Agency (ANA)', 'Grid Operator ONS'],
++      immediateOutlook: 'Energy import agreements being negotiated with neighboring grids.',
++    },
++    sources: [
++      {
++        title: 'Hydrological Reservoir Survey 2026-Q3',
++        url: 'https://ana-water.example.gov.br/report/q3',
++        publisher: 'ANA Brazil',
++        timestamp: '2026-09-19T09:50:00Z',
++        credibilityScore: 95,
++        type: 'official_report',
++      },
++    ],
++    relatedEvents: [
++      { id: 'evt-env-002', title: 'Amazon Basin Soil Moisture Anomaly', domain: 'environmental', severity: 'elevated' },
++    ],
++  },
++  {
++    id: 'evt-emerge-001',
++    title: 'Quantum Key Distribution Interference & Satellite Telemetry Anomaly',
++    description: 'Orbital communication relays logged synchronized optical pulse degradation across low-Earth orbit quantum satellite constellations.',
++    latitude: 52.52,
++    longitude: 13.40,
++    timestamp: '2026-09-19T13:00:00Z',
++    domain: 'emerging',
++    eventType: 'Space Domain & Spectrum Security Signal',
++    severity: 'elevated',
++    trend: 'stable',
++    region: 'Europe',
++    country: 'Germany / EU',
++    affectedPopulation: 'Critical satellite communications backbone',
++    aiAnalysis: {
++      summary: 'Ground stations in Central Europe detected localized laser backscatter signals attempting phase disruption on QKD downlink channels.',
++      riskAssessment: 'Potential high-altitude directed-energy testing or space-based laser alignment recalibration.',
++      keyActors: ['European Space Agency Security Command', 'EU Cybersecurity Agency ENISA'],
++      immediateOutlook: 'Telemetry being analyzed for ground-station geolocation.',
++    },
++    sources: [
++      {
++        title: 'ESA Space Situational Awareness Alert',
++        url: 'https://esa-ssa.example.int/alert/qkd-0919',
++        publisher: 'ESA SSA Operational Center',
++        timestamp: '2026-09-19T13:10:00Z',
++        credibilityScore: 97,
++        type: 'sigint',
++      },
++    ],
++    relatedEvents: [],
++  },
++  {
++    id: 'evt-geo-002',
++    title: 'Critical Mineral Supply Chain Embargo Directive',
++    description: 'New export restrictions announced for refined rare-earth elements, gallium, and germanium targeting high-tech manufacturing sectors.',
++    latitude: 39.90,
++    longitude: 116.40,
++    timestamp: '2026-09-19T05:00:00Z',
++    domain: 'geopolitical',
++    eventType: 'Trade & Economic Warfare',
++    severity: 'high',
++    trend: 'escalating',
++    region: 'Asia Pacific',
++    country: 'China',
++    affectedPopulation: 'Global semiconductor and defense hardware supply chains',
++    aiAnalysis: {
++      summary: 'Customs guidelines now require dual-use end-user licenses for all shipments containing >98% purity germanium and neodymium alloys.',
++      riskAssessment: 'Global electronics manufacturing lead times anticipated to stretch by 14-20 weeks.',
++      keyActors: ['Ministry of Commerce', 'Global Defense Contractors', 'Semiconductor Industry Alliance'],
++      immediateOutlook: 'Bilateral emergency trade talks requested by allied trade delegations.',
++    },
++    sources: [
++      {
++        title: 'MOFCOM Announcement #104-2026',
++        url: 'https://mofcom.example.gov.cn/notice/104',
++        publisher: 'Ministry of Commerce',
++        timestamp: '2026-09-19T05:15:00Z',
++        credibilityScore: 99,
++        type: 'official_report',
++      },
++    ],
++    relatedEvents: [],
++  },
++  {
++    id: 'evt-health-002',
++    title: 'Avian Influenza H5N1 Mammalian Transmission in Dairy Farms',
++    description: 'Genetic markers confirmed reassortment enabling persistent transmission among livestock across multiple agricultural counties.',
++    latitude: 41.87,
++    longitude: -87.62,
++    timestamp: '2026-09-19T10:10:00Z',
++    domain: 'healthcare',
++    eventType: 'Veterinary & One-Health Risk Signal',
++    severity: 'elevated',
++    trend: 'stable',
++    region: 'North America',
++    country: 'United States',
++    affectedPopulation: 'Agricultural workers & dairy supply networks',
++    aiAnalysis: {
++      summary: 'Bulk milk sample PCR testing indicates 12.4% positivity rate in targeted Midwestern herds. Human serology monitoring activated.',
++      riskAssessment: 'Low immediate threat to general public; moderate economic exposure for dairy producers.',
++      keyActors: ['USDA Animal and Plant Health Inspection Service', 'CDC Emergency Operations Center'],
++      immediateOutlook: 'Interstate livestock movement restrictions taking effect.',
++    },
++    sources: [
++      {
++        title: 'USDA One-Health Surveillance Update',
++        url: 'https://usda.example.gov/h5n1-sept2026',
++        publisher: 'USDA APHIS',
++        timestamp: '2026-09-19T10:30:00Z',
++        credibilityScore: 96,
++        type: 'official_report',
++      },
++    ],
++    relatedEvents: [],
++  },
++  {
++    id: 'evt-env-002',
++    title: 'Mediterranean Marine Heatwave & Ecological Anomaly',
++    description: 'Sea surface temperatures reached +4.2°C above seasonal averages, threatening marine biodiversity and triggering algae blooms.',
++    latitude: 38.00,
++    longitude: 18.00,
++    timestamp: '2026-09-19T12:45:00Z',
++    domain: 'environmental',
++    eventType: 'Ocean Thermal Extremes',
++    severity: 'elevated',
++    trend: 'stable',
++    region: 'Europe',
++    country: 'Italy / Greece',
++    affectedPopulation: 'Coastal fishing communities & coastal tourism sectors',
++    aiAnalysis: {
++      summary: 'Copernicus ocean monitors confirm persistent thermal dome over the Ionian Sea, accelerating localized hypoxia.',
++      riskAssessment: 'Potential shock to regional aquaculture and Mediterranean coastal microclimates.',
++      keyActors: ['Copernicus Marine Service', 'EU Environmental Agency'],
++      immediateOutlook: 'Thermal stress predicted to hold through end of month.',
++    },
++    sources: [
++      {
++        title: 'Copernicus Marine Thermal Anomaly Map',
++        url: 'https://copernicus.example.eu/ocean-temp-0919',
++        publisher: 'Copernicus Marine Service',
++        timestamp: '2026-09-19T12:55:00Z',
++        credibilityScore: 98,
++        type: 'satellite',
++      },
++    ],
++    relatedEvents: [],
++  },
++  {
++    id: 'evt-dis-002',
++    title: 'Volcanic Ash Cloud Eruption Disrupts Sub-Saharan Aviation',
++    description: 'Stratospheric plume reaching 42,000 ft altitude forced airspace closure along East African flight paths.',
++    latitude: -3.06,
++    longitude: 37.35,
++    timestamp: '2026-09-19T07:50:00Z',
++    domain: 'disasters',
++    eventType: 'Volcanic Hazard & Airspace Interdiction',
++    severity: 'high',
++    trend: 'escalating',
++    region: 'Africa',
++    country: 'Tanzania / Kenya',
++    affectedPopulation: 'Regional air transport & international long-haul routes',
++    aiAnalysis: {
++      summary: 'Tephra dispersion modeling indicates ash plume drifting northeast toward the Gulf of Aden.',
++      riskAssessment: 'Airway rerouting causing 3-5 hour delays for Europe-Africa air corridors.',
++      keyActors: ['Toulouse Volcanic Ash Advisory Centre (VAAC)', 'ICAO Regional Office'],
++      immediateOutlook: 'Eruption intensity monitoring ongoing via satellite thermal infrared imagery.',
++    },
++    sources: [
++      {
++        title: 'VAAC Volcanic Ash Advisory Bulletin',
++        url: 'https://vaac.example.org/advisory/2026-441',
++        publisher: 'VAAC Toulouse',
++        timestamp: '2026-09-19T08:05:00Z',
++        credibilityScore: 97,
++        type: 'official_report',
++      },
++    ],
++    relatedEvents: [],
++  },
++  {
++    id: 'evt-geo-003',
++    title: 'Cyber-Physical Intrusion on Baltic Power Interconnector',
++    description: 'Subsea high-voltage DC cable telemetry flagged anomalous voltage drop and localized acoustic sensor alerts.',
++    latitude: 56.50,
++    longitude: 19.50,
++    timestamp: '2026-09-19T02:10:00Z',
++    domain: 'geopolitical',
++    eventType: 'Hybrid Warfare & Subsea Infrastructure',
++    severity: 'critical',
++    trend: 'stable',
++    region: 'Europe',
++    country: 'Sweden / Latvia',
++    affectedPopulation: 'Baltic regional energy grid (3.2M households)',
++    aiAnalysis: {
++      summary: 'Acoustic array sensors confirmed physical contact or anchoring near cable joint segment #4. Power flow reduced by 700 MW.',
++      riskAssessment: 'High probability of state-sponsored subsurface survey activity.',
++      keyActors: ['NATO Cyber Defence Command', 'Swedish Navy Hydrographic Office', 'Nordic Grid Alliance'],
++      immediateOutlook: 'Deep-sea repair vessel dispatched with naval escort.',
++    },
++    sources: [
++      {
++        title: 'Subsea Cable Telemetry Incident Brief',
++        url: 'https://nordic-grid.example.com/incident/baltic-cable',
++        publisher: 'Nordic Grid Infrastructure Security',
++        timestamp: '2026-09-19T02:30:00Z',
++        credibilityScore: 95,
++        type: 'sensor',
++      },
++    ],
++    relatedEvents: [],
++  },
++  {
++    id: 'evt-emerge-002',
++    title: 'Autonomous Drone Swarm Agricultural Security Signals',
++    description: 'Uncoordinated autonomous UAV flights detected mapping border fencing and agricultural research facilities without flight plan filings.',
++    latitude: -25.74,
++    longitude: 28.22,
++    timestamp: '2026-09-19T04:40:00Z',
++    domain: 'emerging',
++    eventType: 'Unmanned Aerial Surveillance Anomaly',
++    severity: 'normal',
++    trend: 'stable',
++    region: 'Africa',
++    country: 'South Africa',
++    affectedPopulation: 'Agricultural research zones',
++    aiAnalysis: {
++      summary: 'RF spectrum analyzers captured encrypted 2.4 GHz telemetry originating from a mobile control node.',
++      riskAssessment: 'Potential commercial espionage targeting drought-resistant seed trial plots.',
++      keyActors: ['Civil Aviation Authority', 'Agricultural Security Taskforce'],
++      immediateOutlook: 'RF jamming countermeasures deployed locally.',
++    },
++    sources: [
++      {
++        title: 'Spectrum Surveillance RF Log',
++        url: 'https://rf-intel.example.org/log/sa-0919',
++        publisher: 'Regional Telecom Security',
++        timestamp: '2026-09-19T04:55:00Z',
++        credibilityScore: 89,
++        type: 'sigint',
++      },
++    ],
++    relatedEvents: [],
++  },
++]
++
++export const MOCK_REGIONAL_SNAPSHOTS: Record<string, RegionalSnapshot> = {
++  'Middle East': {
++    id: 'reg-me',
++    regionName: 'Middle East',
++    threatLevel: 'critical',
++    regimeStatus: 'High Alert / Maritime Vulnerability Elevated',
++    geopoliticalRiskScore: 88,
++    healthcareRiskScore: 32,
++    environmentalRiskScore: 64,
++    summary: 'Chokepoint security concerns along Strait of Hormuz and Bab-el-Mandeb remain high. Naval presence intensified following automated AIS anomalies.',
++    keyActors: ['IRGC Naval Command', 'US 5th Fleet', 'GCC Defense Council', 'Combined Maritime Forces'],
++    outlook24h: 'High probability of continued GPS jamming and localized maritime escort formations.',
++    outlook7d: 'Diplomatic engagement expected to focus on freedom of navigation guarantees.',
++  },
++  'Asia Pacific': {
++    id: 'reg-ap',
++    regionName: 'Asia Pacific',
++    threatLevel: 'high',
++    regimeStatus: 'Bio-Surveillance Vigilance / Economic Trade Friction',
++    geopoliticalRiskScore: 76,
++    healthcareRiskScore: 84,
++    environmentalRiskScore: 52,
++    summary: 'Respiratory disease cluster in Bangkok being monitored closely while critical mineral export restrictions disrupt tech manufacturing.',
++    keyActors: ['ASEAN Health Network', 'MOFCOM', 'CDC Asia', 'Pacific Fleet Command'],
++    outlook24h: 'Sequencing data expected for novel pathogen; semiconductor supply chain adjustments.',
++    outlook7d: 'Sub-regional health containment protocols may be triggered.',
++  },
++  'Europe': {
++    id: 'reg-eu',
++    regionName: 'Europe',
++    threatLevel: 'elevated',
++    regimeStatus: 'Subsea Critical Infrastructure Alert',
++    geopoliticalRiskScore: 68,
++    healthcareRiskScore: 24,
++    environmentalRiskScore: 60,
++    summary: 'Subsea energy and telecommunication infrastructure in Baltic Sea experiencing elevated physical & cyber monitoring.',
++    keyActors: ['NATO Joint Force Command', 'European Commission Energy Taskforce', 'ESA Security'],
++    outlook24h: 'Subsea repair vessel arrives at Baltic cable fault location.',
++    outlook7d: 'Enhanced maritime patrol presence active across North and Baltic Seas.',
++  },
++  'North America': {
++    id: 'reg-na',
++    regionName: 'North America',
++    threatLevel: 'elevated',
++    regimeStatus: 'Extreme Weather Response & Veterinary Monitoring',
++    geopoliticalRiskScore: 35,
++    healthcareRiskScore: 58,
++    environmentalRiskScore: 82,
++    summary: 'Pacific Northwest atmospheric river system causing localized infrastructure flooding while H5N1 livestock monitoring expands.',
++    keyActors: ['FEMA', 'NOAA', 'CDC', 'USDA APHIS'],
++    outlook24h: 'Flood cresting across river basins; dairy surveillance reports updated.',
++    outlook7d: 'Storm recovery operations in progress.',
++  },
++  'Latin America': {
++    id: 'reg-la',
++    regionName: 'Latin America',
++    threatLevel: 'high',
++    regimeStatus: 'Drought-Energy Crisis & Seismic Recovery',
++    geopoliticalRiskScore: 54,
++    healthcareRiskScore: 41,
++    environmentalRiskScore: 89,
++    summary: 'Hydro-electric deficit in South American river basins impacting industrial power generation alongside earthquake safety audits.',
++    keyActors: ['ANA Brazil', 'SENAPRED Chile', 'Regional Power Grid ONS'],
++    outlook24h: 'Emergency energy rationing for heavy industry active.',
++    outlook7d: 'International grid intertie agreements under negotiation.',
++  },
++  'Africa': {
++    id: 'reg-af',
++    regionName: 'Africa',
++    threatLevel: 'elevated',
++    regimeStatus: 'Volcanic Aviation Disruptions',
++    geopoliticalRiskScore: 62,
++    healthcareRiskScore: 49,
++    environmentalRiskScore: 71,
++    summary: 'Volcanic ash plume disrupting East African airspace and European long-haul flight corridors.',
++    keyActors: ['African Union Peace & Security', 'VAAC Toulouse', 'ICAO East Africa'],
++    outlook24h: 'Ash cloud tracking northeast toward Gulf of Aden.',
++    outlook7d: 'Flight routing adjustments expected to gradually normalize.',
++  },
++}
+diff --git a/src/pages/OrbitDashboard.tsx b/src/pages/OrbitDashboard.tsx
+new file mode 100644
+index 0000000..5ddf5d0
+--- /dev/null
++++ b/src/pages/OrbitDashboard.tsx
+@@ -0,0 +1,123 @@
++import { useState, useMemo } from 'react'
++import type { FilterState, OrbitEvent, SeverityLevel } from '../types/orbit'
++import { MOCK_EVENTS, MOCK_REGIONAL_SNAPSHOTS } from '../mock/orbitData'
++import { OrbitHeader } from '../components/orbit/OrbitHeader'
++import { LayersPanel } from '../components/orbit/LayersPanel'
++import { OrbitMap } from '../components/orbit/OrbitMap'
++import { IntelligencePanel } from '../components/orbit/IntelligencePanel'
++import { StatusBar } from '../components/orbit/StatusBar'
++import '../components/orbit/orbit.css'
++
++const SEVERITY_RANK: Record<SeverityLevel, number> = {
++  critical: 4,
++  high: 3,
++  elevated: 2,
++  normal: 1,
++  info: 0,
++}
++
++export function OrbitDashboard() {
++  const [filters, setFilters] = useState<FilterState>({
++    searchQuery: '',
++    selectedRegion: 'all',
++    selectedTimeRange: 'live',
++    activeLayers: {
++      geopolitical: true,
++      healthcare: true,
++      environmental: true,
++      disasters: true,
++      emerging: true,
++      cross_domain: true,
++    },
++    minSeverity: 'all',
++    projectionMode: '3d',
++  })
++
++  const [selectedEvent, setSelectedEvent] = useState<OrbitEvent | null>(MOCK_EVENTS[0])
++  const [zoomLevel, setZoomLevel] = useState<number>(1.0)
++
++  // Filter events based on state
++  const filteredEvents = useMemo(() => {
++    return MOCK_EVENTS.filter((evt) => {
++      // Layer check
++      if (!filters.activeLayers[evt.domain]) return false
++
++      // Region check
++      if (filters.selectedRegion !== 'all' && evt.region !== filters.selectedRegion) {
++        return false
++      }
++
++      // Severity threshold check
++      if (filters.minSeverity !== 'all') {
++        const minRank = SEVERITY_RANK[filters.minSeverity as SeverityLevel] || 0
++        const evtRank = SEVERITY_RANK[evt.severity] || 0
++        if (evtRank < minRank) return false
++      }
++
++      // Search query check
++      if (filters.searchQuery.trim()) {
++        const q = filters.searchQuery.toLowerCase()
++        const matchTitle = evt.title.toLowerCase().includes(q)
++        const matchDesc = evt.description.toLowerCase().includes(q)
++        const matchRegion = evt.region.toLowerCase().includes(q)
++        const matchCountry = evt.country.toLowerCase().includes(q)
++        const matchDomain = evt.domain.toLowerCase().includes(q)
++        if (!matchTitle && !matchDesc && !matchRegion && !matchCountry && !matchDomain) {
++          return false
++        }
++      }
++
++      return true
++    })
++  }, [filters])
++
++  const handleZoomChange = (delta: number) => {
++    setZoomLevel((prev) => Math.max(0.5, Math.min(3.5, prev + delta)))
++  }
++
++  const handleResetCamera = () => {
++    setZoomLevel(1.0)
++    if (MOCK_EVENTS.length > 0) {
++      setSelectedEvent(MOCK_EVENTS[0])
++    }
++  }
++
++  return (
++    <div className="orbit-container">
++      <OrbitHeader
++        filters={filters}
++        onFilterChange={setFilters}
++        onResetView={handleResetCamera}
++        totalActiveEvents={filteredEvents.length}
++      />
++
++      <div className="orbit-workspace">
++        <LayersPanel
++          filters={filters}
++          onFilterChange={setFilters}
++          events={MOCK_EVENTS}
++        />
++
++        <OrbitMap
++          events={filteredEvents}
++          selectedEvent={selectedEvent}
++          onSelectEvent={setSelectedEvent}
++          projectionMode={filters.projectionMode}
++          zoomLevel={zoomLevel}
++          onZoomChange={handleZoomChange}
++          onResetCamera={handleResetCamera}
++        />
++
++        <IntelligencePanel
++          events={filteredEvents}
++          selectedEvent={selectedEvent}
++          onSelectEvent={setSelectedEvent}
++          regionalSnapshots={MOCK_REGIONAL_SNAPSHOTS}
++          selectedRegion={filters.selectedRegion}
++        />
++      </div>
++
++      <StatusBar activeCount={filteredEvents.length} totalCount={MOCK_EVENTS.length} />
++    </div>
++  )
++}
+diff --git a/src/types/orbit.ts b/src/types/orbit.ts
+new file mode 100644
+index 0000000..c9b0b49
+--- /dev/null
++++ b/src/types/orbit.ts
+@@ -0,0 +1,74 @@
++export type OrbitDomain = 
++  | 'geopolitical'
++  | 'healthcare'
++  | 'environmental'
++  | 'disasters'
++  | 'emerging'
++  | 'cross_domain'
++
++export type SeverityLevel = 'critical' | 'high' | 'elevated' | 'normal' | 'info'
++
++export type SeverityTrend = 'escalating' | 'stable' | 'deescalating'
++
++export interface EvidenceSource {
++  title: string
++  url: string
++  publisher: string
++  timestamp: string
++  credibilityScore: number // 0 - 100
++  type: 'satellite' | 'news' | 'sensor' | 'official_report' | 'sigint'
++}
++
++export interface RelatedSignal {
++  id: string
++  title: string
++  domain: OrbitDomain
++  severity: SeverityLevel
++}
++
++export interface OrbitEvent {
++  id: string
++  title: string
++  description: string
++  latitude: number
++  longitude: number
++  timestamp: string
++  domain: OrbitDomain
++  eventType: string
++  severity: SeverityLevel
++  trend: SeverityTrend
++  region: string
++  country: string
++  affectedPopulation?: string
++  aiAnalysis: {
++    summary: string
++    riskAssessment: string
++    keyActors: string[]
++    immediateOutlook: string
++  }
++  sources: EvidenceSource[]
++  relatedEvents: RelatedSignal[]
++}
++
++export interface RegionalSnapshot {
++  id: string
++  regionName: string
++  threatLevel: SeverityLevel
++  regimeStatus: string
++  geopoliticalRiskScore: number // 0-100
++  healthcareRiskScore: number // 0-100
++  environmentalRiskScore: number // 0-100
++  summary: string
++  keyActors: string[]
++  outlook24h: string
++  outlook7d: string
++}
++
++export interface FilterState {
++  searchQuery: string
++  selectedRegion: string
++  selectedTimeRange: 'live' | '24h' | '7d' | '30d' | 'all'
++  activeLayers: Record<OrbitDomain, boolean>
++  minSeverity: SeverityLevel | 'all'
++  projectionMode: '2d' | '3d'
++}

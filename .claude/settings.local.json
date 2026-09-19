@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git show *)",
+      "Bash(git diff *)",
+      "Read(//tmp/**)",
+      "Bash(Test-Path *)",
+      "Skill(code-review)",
+      "Bash(pwd -W)",
+      "Bash(wc -l /tmp/orbit_diff.txt /tmp/orbit_diff_src.txt)",
+      "Bash(cygpath -w /tmp/orbit_full.txt)",
+      "Read(//d/Users/Admin/Desktop/**)",
+      "Bash(wc -l /tmp/orbit_diff.diff)",
+      "Bash(ls -la /tmp/orbit_diff.diff)",
+      "Bash(cp /tmp/orbit_diff.txt /d/Hack2026/hackathon/orbit_diff_copy.txt)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(echo \"EXIT:$?\")"
+    ]
+  }
+}
