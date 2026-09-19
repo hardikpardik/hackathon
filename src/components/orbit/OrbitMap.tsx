@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef, type FC, type MouseEvent, type WheelEvent } from 'react'
+import { useState, useEffect, useRef, useMemo, type FC, type MouseEvent, type WheelEvent } from 'react'
+import { geoOrthographic, geoPath, geoGraticule10, geoDistance, type GeoProjection, type GeoPermissibleObjects } from 'd3-geo'
+import { feature, mesh } from 'topojson-client'
 import type { OrbitEvent, FilterState } from '../../types/orbit'
 
 interface OrbitMapProps {
@@ -28,6 +30,39 @@ const DOMAIN_ICONS: Record<string, string> = {
   cross_domain: '🔀',
 }
 
+// Pre-computed deterministic star field (percent-based positions)
+const STARS = Array.from({ length: 220 }, (_, i) => {
+  const rnd = (n: number) => {
+    const x = Math.sin((i + 1) * n) * 10000
+    return x - Math.floor(x)
+  }
+  return { x: rnd(12.9898), y: rnd(78.233), r: rnd(43.11) * 1.3 + 0.2, a: rnd(93.77) * 0.6 + 0.2 }
+})
+
+// Shared world land / borders geometry loaded once from bundled topojson
+let worldCache: { land: GeoPermissibleObjects; borders: GeoPermissibleObjects } | null = null
+
+function useWorldData() {
+  const [world, setWorld] = useState(worldCache)
+  useEffect(() => {
+    if (worldCache) return
+    let alive = true
+    fetch('/countries-110m.json')
+      .then((r) => r.json())
+      .then((topo) => {
+        const land = feature(topo, topo.objects.countries) as unknown as GeoPermissibleObjects
+        const borders = mesh(topo, topo.objects.countries, (a: unknown, b: unknown) => a !== b) as unknown as GeoPermissibleObjects
+        worldCache = { land, borders }
+        if (alive) setWorld(worldCache)
+      })
+      .catch(() => {})
+    return () => {
+      alive = false
+    }
+  }, [])
+  return world
+}
+
 export const OrbitMap: FC<OrbitMapProps> = ({
   events,
   selectedEvent,
@@ -39,6 +74,7 @@ export const OrbitMap: FC<OrbitMapProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const world = useWorldData()
 
   // Map state
   const [centerLon, setCenterLon] = useState(15)
@@ -47,6 +83,29 @@ export const OrbitMap: FC<OrbitMapProps> = ({
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
   const [hoveredEvent, setHoveredEvent] = useState<OrbitEvent | null>(null)
   const [mouseCoords, setMouseCoords] = useState<{ lat: number; lon: number } | null>(null)
+  const [size, setSize] = useState({ width: 0, height: 0 })
+
+  // Track viewport size
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const update = () => setSize({ width: el.clientWidth, height: el.clientHeight })
+    update()
+    const ro = new ResizeObserver(update)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+
+  // Orthographic projection for the 3D globe
+  const projection = useMemo<GeoProjection | null>(() => {
+    if (projectionMode !== '3d' || !size.width || !size.height) return null
+    const radius = Math.min(size.width, size.height) * 0.42 * zoomLevel
+    return geoOrthographic()
+      .scale(radius)
+      .translate([size.width / 2, size.height / 2])
+      .rotate([-centerLon, -centerLat])
+      .clipAngle(90)
+  }, [projectionMode, size, zoomLevel, centerLon, centerLat])
 
   // Center on selected event if changed
   useEffect(() => {
@@ -68,11 +127,13 @@ export const OrbitMap: FC<OrbitMapProps> = ({
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
 
-    // Calculate approximate lat/lon under cursor for HUD
     if (projectionMode === '2d') {
       const lon = ((x / rect.width) * 360 - 180) / zoomLevel + centerLon
       const lat = (90 - (y / rect.height) * 180) / zoomLevel + centerLat
       setMouseCoords({ lat: Math.max(-90, Math.min(90, lat)), lon: ((lon + 180) % 360) - 180 })
+    } else if (projection) {
+      const inv = projection.invert?.([x, y])
+      if (inv) setMouseCoords({ lat: inv[1], lon: inv[0] })
     }
 
     if (!isDragging) return
@@ -87,8 +148,8 @@ export const OrbitMap: FC<OrbitMapProps> = ({
       setCenterLat((prev) => Math.max(-85, Math.min(85, prev + dy * 0.4)))
     } else {
       // Pan 2D map
-      setCenterLon((prev) => prev - (dx / (rect.width * 0.005)) / zoomLevel)
-      setCenterLat((prev) => Math.max(-85, Math.min(85, prev + (dy / (rect.height * 0.005)) / zoomLevel)))
+      setCenterLon((prev) => prev - dx / (rect.width * 0.005) / zoomLevel)
+      setCenterLat((prev) => Math.max(-85, Math.min(85, prev + dy / (rect.height * 0.005) / zoomLevel)))
     }
   }
 
@@ -101,87 +162,132 @@ export const OrbitMap: FC<OrbitMapProps> = ({
     onZoomChange(e.deltaY < 0 ? 0.2 : -0.2)
   }
 
-  // Draw tactical Canvas background (graticules, globe sphere, land mass grid)
+  // Draw the tactical globe / 2D grid
   useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas || !containerRef.current) return
+    const container = containerRef.current
+    if (!canvas || !container) return
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    const width = containerRef.current.clientWidth
-    const height = containerRef.current.clientHeight
-    canvas.width = width
-    canvas.height = height
+    const { width, height } = size
+    if (!width || !height) return
 
-    // Clear
+    const dpr = window.devicePixelRatio || 1
+    canvas.width = width * dpr
+    canvas.height = height * dpr
+    canvas.style.width = `${width}px`
+    canvas.style.height = `${height}px`
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     ctx.clearRect(0, 0, width, height)
 
-    if (projectionMode === '3d') {
-      // Render 3D Orthographic Globe
-      const radius = Math.min(width, height) * 0.38 * zoomLevel
+    // Deep-space star field backdrop
+    for (const s of STARS) {
+      ctx.globalAlpha = s.a
+      ctx.fillStyle = '#9fd8ff'
+      ctx.beginPath()
+      ctx.arc(s.x * width, s.y * height, s.r, 0, Math.PI * 2)
+      ctx.fill()
+    }
+    ctx.globalAlpha = 1
+
+    if (projectionMode === '3d' && projection) {
+      const path = geoPath(projection, ctx)
       const cx = width / 2
       const cy = height / 2
+      const radius = projection.scale()
 
-      // Globe atmospheric outer glow
-      const glowGrad = ctx.createRadialGradient(cx, cy, radius * 0.95, cx, cy, radius * 1.15)
-      glowGrad.addColorStop(0, 'rgba(0, 240, 255, 0.25)')
-      glowGrad.addColorStop(1, 'rgba(0, 240, 255, 0)')
-      ctx.fillStyle = glowGrad
+      // Atmospheric outer glow
+      const glow = ctx.createRadialGradient(cx, cy, radius * 0.92, cx, cy, radius * 1.22)
+      glow.addColorStop(0, 'rgba(56, 189, 248, 0.35)')
+      glow.addColorStop(0.5, 'rgba(14, 116, 200, 0.12)')
+      glow.addColorStop(1, 'rgba(8, 47, 90, 0)')
+      ctx.fillStyle = glow
       ctx.beginPath()
-      ctx.arc(cx, cy, radius * 1.15, 0, Math.PI * 2)
+      ctx.arc(cx, cy, radius * 1.22, 0, Math.PI * 2)
       ctx.fill()
 
-      // Globe sphere surface fill
-      const sphereGrad = ctx.createRadialGradient(cx - radius * 0.3, cy - radius * 0.3, radius * 0.1, cx, cy, radius)
-      sphereGrad.addColorStop(0, '#101e33')
-      sphereGrad.addColorStop(0.7, '#09111c')
-      sphereGrad.addColorStop(1, '#04070d')
-      ctx.fillStyle = sphereGrad
+      // Ocean sphere with sunlit shading (light from upper-left)
+      const ocean = ctx.createRadialGradient(
+        cx - radius * 0.35,
+        cy - radius * 0.4,
+        radius * 0.15,
+        cx,
+        cy,
+        radius,
+      )
+      ocean.addColorStop(0, '#1c4a70')
+      ocean.addColorStop(0.5, '#0e2c49')
+      ocean.addColorStop(1, '#05121f')
+      const sphere = { type: 'Sphere' } as unknown as GeoPermissibleObjects
       ctx.beginPath()
-      ctx.arc(cx, cy, radius, 0, Math.PI * 2)
+      path(sphere)
+      ctx.fillStyle = ocean
       ctx.fill()
-      ctx.lineWidth = 1.5
-      ctx.strokeStyle = '#00f0ff'
+
+      // Graticule
+      ctx.beginPath()
+      path(geoGraticule10())
+      ctx.strokeStyle = 'rgba(96, 189, 240, 0.12)'
+      ctx.lineWidth = 0.5
       ctx.stroke()
 
-      // Render 3D Latitude/Longitude Graticule lines
-      ctx.lineWidth = 0.5
-      ctx.strokeStyle = 'rgba(0, 240, 255, 0.15)'
-
-      // Longitude lines
-      for (let lon = -180; lon < 180; lon += 30) {
+      // Land masses
+      if (world) {
         ctx.beginPath()
-        let started = false
-        for (let lat = -90; lat <= 90; lat += 5) {
-          const pt = project3D(lat, lon, centerLat, centerLon, radius, cx, cy)
-          if (pt.visible) {
-            if (!started) { ctx.moveTo(pt.x, pt.y); started = true }
-            else { ctx.lineTo(pt.x, pt.y) }
-          } else {
-            started = false
-          }
-        }
+        path(world.land)
+        const landGrad = ctx.createRadialGradient(
+          cx - radius * 0.35,
+          cy - radius * 0.4,
+          radius * 0.1,
+          cx,
+          cy,
+          radius,
+        )
+        landGrad.addColorStop(0, '#2f6a44')
+        landGrad.addColorStop(0.55, '#1d4530')
+        landGrad.addColorStop(1, '#0c2118')
+        ctx.fillStyle = landGrad
+        ctx.fill()
+
+        // Country borders
+        ctx.beginPath()
+        path(world.borders)
+        ctx.strokeStyle = 'rgba(120, 214, 168, 0.35)'
+        ctx.lineWidth = 0.4
+        ctx.stroke()
+
+        // Coastline accent
+        ctx.beginPath()
+        path(world.land)
+        ctx.strokeStyle = 'rgba(0, 240, 255, 0.4)'
+        ctx.lineWidth = 0.5
         ctx.stroke()
       }
 
-      // Latitude circles
-      for (let lat = -60; lat <= 60; lat += 30) {
-        ctx.beginPath()
-        let started = false
-        for (let lon = -180; lon <= 180; lon += 5) {
-          const pt = project3D(lat, lon, centerLat, centerLon, radius, cx, cy)
-          if (pt.visible) {
-            if (!started) { ctx.moveTo(pt.x, pt.y); started = true }
-            else { ctx.lineTo(pt.x, pt.y) }
-          } else {
-            started = false
-          }
-        }
-        ctx.stroke()
-      }
+      // Terminator shading — subtle dark limb on lower-right
+      const shade = ctx.createRadialGradient(
+        cx + radius * 0.45,
+        cy + radius * 0.5,
+        radius * 0.2,
+        cx,
+        cy,
+        radius * 1.05,
+      )
+      shade.addColorStop(0, 'rgba(2, 6, 14, 0.55)')
+      shade.addColorStop(0.6, 'rgba(2, 6, 14, 0)')
+      ctx.beginPath()
+      path(sphere)
+      ctx.fillStyle = shade
+      ctx.fill()
 
-    } else {
-      // Render 2D Grid & Map lines
+      // Sphere rim
+      ctx.beginPath()
+      path(sphere)
+      ctx.strokeStyle = 'rgba(0, 240, 255, 0.7)'
+      ctx.lineWidth = 1.2
+      ctx.stroke()
+    } else if (projectionMode === '2d') {
       ctx.strokeStyle = 'rgba(31, 41, 61, 0.6)'
       ctx.lineWidth = 0.5
 
@@ -199,7 +305,6 @@ export const OrbitMap: FC<OrbitMapProps> = ({
         ctx.stroke()
       }
 
-      // Draw Equator & Prime Meridian accents
       const eqY = height / 2 + (centerLat * height) / 180
       const pmX = width / 2 - (centerLon * width) / 360
 
@@ -215,45 +320,20 @@ export const OrbitMap: FC<OrbitMapProps> = ({
       ctx.lineTo(pmX, height)
       ctx.stroke()
     }
-  }, [projectionMode, centerLon, centerLat, zoomLevel])
-
-  // Helper projection math for 3D Globe
-  function project3D(
-    lat: number,
-    lon: number,
-    cLat: number,
-    cLon: number,
-    radius: number,
-    cx: number,
-    cy: number
-  ) {
-    const radLat = (lat * Math.PI) / 180
-    const radLon = (lon * Math.PI) / 180
-    const radCLat = (cLat * Math.PI) / 180
-    const radCLon = (cLon * Math.PI) / 180
-
-    const cosc = Math.sin(radCLat) * Math.sin(radLat) + Math.cos(radCLat) * Math.cos(radLat) * Math.cos(radLon - radCLon)
-    const visible = cosc > 0
-
-    const x = cx + radius * Math.cos(radLat) * Math.sin(radLon - radCLon)
-    const y = cy - radius * (Math.cos(radCLat) * Math.sin(radLat) - Math.sin(radCLat) * Math.cos(radLat) * Math.cos(radLon - radCLon))
-
-    return { x, y, visible }
-  }
+  }, [projection, projectionMode, size, world, centerLon, centerLat, zoomLevel])
 
   // Calculate marker screen positions
   const getMarkerPos = (lat: number, lon: number) => {
-    if (!containerRef.current) return { x: -999, y: -999, visible: false }
-    const width = containerRef.current.clientWidth
-    const height = containerRef.current.clientHeight
+    const { width, height } = size
+    if (!width || !height) return { x: -999, y: -999, visible: false }
 
     if (projectionMode === '3d') {
-      const radius = Math.min(width, height) * 0.38 * zoomLevel
-      const cx = width / 2
-      const cy = height / 2
-      return project3D(lat, lon, centerLat, centerLon, radius, cx, cy)
+      if (!projection) return { x: -999, y: -999, visible: false }
+      const p = projection([lon, lat])
+      if (!p) return { x: -999, y: -999, visible: false }
+      const onNearSide = geoDistance([lon, lat], [centerLon, centerLat]) < Math.PI / 2
+      return { x: p[0], y: p[1], visible: onNearSide }
     } else {
-      // 2D Projection
       const x = ((lon - centerLon + 180) / 360) * width * zoomLevel + (width * (1 - zoomLevel)) / 2
       const y = ((90 - lat - centerLat) / 180) * height * zoomLevel + (height * (1 - zoomLevel)) / 2
       const visible = x >= 0 && x <= width && y >= 0 && y <= height

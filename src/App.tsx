@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
+import { Intro } from './components/Intro'
 import { OrbitDashboard } from './pages/OrbitDashboard'
 import { Dashboard } from './pages/Dashboard'
 import { IncidentDetailPage } from './pages/IncidentDetail'
@@ -9,8 +11,12 @@ import { Settings } from './pages/Settings'
 import './App.css'
 
 export default function App() {
+  const [introDone, setIntroDone] = useState(false)
+
   return (
-    <BrowserRouter>
+    <>
+      {!introDone && <Intro onDone={() => setIntroDone(true)} />}
+      <BrowserRouter>
       <Routes>
         {/* Main ORBIT Global Intelligence Dashboard */}
         <Route path="/" element={<OrbitDashboard />} />
@@ -23,8 +29,9 @@ export default function App() {
           <Route path="/incidents/:id" element={<IncidentDetailPage />} />
           <Route path="/services" element={<Services />} />
           <Route path="/settings" element={<Settings />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   )
 }
