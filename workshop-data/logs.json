@@ -1,0 +1,5 @@
+[
+  {"timestamp":"2026-09-18T16:18:00Z","service":"checkout-web","message":"POST /checkout 502 upstream timeout"},
+  {"timestamp":"2026-09-18T16:22:00Z","service":"checkout-web","message":"payment_confirmation exceeded 3000ms"},
+  {"timestamp":"2026-09-18T16:31:00Z","service":"checkout-web","message":"retry budget exhausted for order 81291"}
+]

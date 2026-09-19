@@ -1,0 +1,4 @@
+[
+  {"id":"checkout-127","title":"Checkout latency","service":"checkout-web","severity":"P2","status":"open","createdAt":"2026-09-18T16:49:00Z"},
+  {"id":"payment-104","title":"Payment API latency","service":"payments-api","severity":"P1","status":"open","createdAt":"2026-09-18T17:30:00Z"}
+]

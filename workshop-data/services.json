@@ -1,0 +1,5 @@
+[
+  {"name":"checkout-web","owner":"Storefront","health":"degraded","latencyMs":1240,"errorRate":"2.8%"},
+  {"name":"payments-api","owner":"Commerce Platform","health":"critical","latencyMs":1840,"errorRate":"1.2%"},
+  {"name":"search-service","owner":"Discovery","health":"healthy","latencyMs":115,"errorRate":"0.02%"}
+]

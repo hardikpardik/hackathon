@@ -1,0 +1,4 @@
+[
+  {"id":"deploy-884","service":"checkout-web","version":"2026.09.18.3","deployedAt":"2026-09-18T15:58:00Z","author":"sam.lee"},
+  {"id":"deploy-883","service":"payments-api","version":"2026.09.18.2","deployedAt":"2026-09-18T13:22:00Z","author":"riley.chen"}
+]

@@ -1,0 +1,10 @@
+{
+  "servers": {
+    "incidentData": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["mcp/server.mjs"],
+      "cwd": "${workspaceFolder}"
+    }
+  }
+}
